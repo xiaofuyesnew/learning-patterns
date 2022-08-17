@@ -1,4 +1,13 @@
-<script setup></script>
+---
+layout: home
+
+hero:
+  name: Pattern.dev
+---
+
+<!-- <script setup>
+import Welcome from './components/Welcome.vue'
+</script>
 
 <style lang="scss" scoped>
 .img {
@@ -6,5 +15,4 @@
 }
 </style>
 
-<img class="img" src="./cover.png" alt="Learning Patterns">
-<button>开始</button>
+<welcome /> -->
