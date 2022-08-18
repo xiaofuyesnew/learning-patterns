@@ -3,4 +3,8 @@ layout: page
 sidebar: false
 ---
 
-# 目录
+<script setup>
+import Contents from './views/Contents.vue'
+</script>
+
+<contents />

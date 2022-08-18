@@ -4,8 +4,8 @@
     <img class="cover" src="/cover.png">
     <p class="description">Patterns.dev 是一本关于设计模式和组件模式的免费书籍，用于使用 vanilla JavaScript 和 React 构建强大的 web 应用。</p>
     <div class="btn-box">
-      <div class="btn">去 patterns.dev</div>
-      <div class="btn">开始阅读 →</div>
+      <a href="https://www.patterns.dev/" class="btn">Patterns.dev</a>
+      <a href="/contents" class="btn start"></a>
     </div>
   </div>
 </template>
@@ -39,7 +39,7 @@ h1 {
   letter-spacing: -.02rem;
   line-height: 1.125;
   margin-bottom: 30px;
-  
+
 }
 
 .cover {
@@ -51,5 +51,43 @@ h1 {
 .description {
   font-size: 1.25rem;
   text-align: center;
+}
+
+.btn-box {
+  width: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 50px;
+
+  .btn {
+    width: 140px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(25, 25, 25, 1);
+    color: #fff;
+    line-height: 1em;
+    border-radius: 0.25rem;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      background-color: rgba(25, 25, 25, .6);
+    }
+
+    &.start {
+      position: relative;
+
+      &::before {
+        content: '开始阅读';
+      }
+
+      &:hover::before {
+        content: '卷起来♾️';
+      }
+
+    }
+  }
 }
 </style>
