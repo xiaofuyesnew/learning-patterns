@@ -4,8 +4,8 @@
     <img class="cover" src="/cover.png">
     <p class="description">Patterns.dev 是一本关于设计模式和组件模式的免费书籍，用于使用 vanilla JavaScript 和 React 构建强大的 web 应用。</p>
     <div class="btn-box">
-      <a href="https://www.patterns.dev/" class="btn">Patterns.dev</a>
-      <a href="/contents" class="btn start"></a>
+      <a href="https://www.patterns.dev/" target="_blank" class="btn">Patterns.dev</a>
+      <a href="/learning-patterns/contents" class="btn start"></a>
     </div>
   </div>
 </template>
