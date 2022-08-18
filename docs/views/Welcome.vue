@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <h1>改进你 <span class="color">构建</span> web 应用的方式</h1>
+    <h1>改进 <span class="color">构建</span> web 应用的方式</h1>
     <img class="cover" src="/cover.png">
-    <p class="description">Patterns.dev 是一本关于设计模式和组件模式的免费书籍，用于使用 vanilla JavaScript 和 React 构建强大的 web 应用程序。</p>
+    <p class="description">Patterns.dev 是一本关于设计模式和组件模式的免费书籍，用于使用 vanilla JavaScript 和 React 构建强大的 web 应用。</p>
     <div class="btn-box">
-
+      <div class="btn">去 patterns.dev</div>
+      <div class="btn">开始阅读 →</div>
     </div>
   </div>
 </template>
@@ -42,7 +43,7 @@ h1 {
 }
 
 .cover {
-  width: 280px;
+  width: 240px;
   margin-bottom: 30px;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
