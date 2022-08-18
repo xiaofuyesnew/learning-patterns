@@ -18,7 +18,7 @@ export default {
       { text: '关于', link: '/about' },
     ],
     footer: {
-      message: '本网站及其源码遵循 MIT 协议',
+      message: '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;display:inline;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>',
       copyright: 'Copyright © 2022-present Allen Wong'
     },
     sidebar: [
