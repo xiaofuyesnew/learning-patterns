@@ -44,6 +44,7 @@ h1 {
 .cover {
   width: 280px;
   margin-bottom: 30px;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
 .description {

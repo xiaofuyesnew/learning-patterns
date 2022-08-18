@@ -4,7 +4,7 @@ sidebar: false
 ---
 
 <script setup>
-import About from './components/About.vue'
+import About from './views/About.vue'
 </script>
 
 <about />

@@ -4,12 +4,12 @@
       <template #title>
         关于
       </template>
-      <template #lead>
-        The development of VitePress is guided by an international
-        team, some of whom have chosen to be featured below.
-      </template>
+      <!-- <template #lead>
+        本站内容由以下团队成员提供并创建
+      </template> -->
     </VPTeamPageTitle>
     <VPTeamMembers :members="members" />
+    <div class=""></div>
   </VPTeamPage>
 </template>
 

@@ -1,12 +1,9 @@
 ---
 layout: home
-
-hero:
-  name: Pattern.dev
 ---
 
-<!-- <script setup>
-import Welcome from './components/Welcome.vue'
+<script setup>
+import Welcome from './views/Welcome.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -15,4 +12,4 @@ import Welcome from './components/Welcome.vue'
 }
 </style>
 
-<welcome /> -->
+<welcome />
