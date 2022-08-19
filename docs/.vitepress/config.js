@@ -1,4 +1,11 @@
 export default {
+  head: [
+    ['link', {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: '/logo.svg'
+    }]
+  ],
   base: '/learning-patterns/',
   title: 'Patterns',
   description: 'Learn JavaScript design and performance patterns for building more powerful web applications.',
