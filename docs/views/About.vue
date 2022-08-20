@@ -12,7 +12,7 @@
       <VPTeamMembers :members="members" />
       <div class="card">
         <img class="qr" src="/qrcode.jpg">
-        <div class="tips">如果觉得本站对你有帮助，可以请我喝杯☕，谢谢🙏</div>
+        <div class="tips">觉得本站内容有帮助，可以请我喝杯☕，谢谢🙏</div>
       </div>
     </div>
   </VPTeamPage>
