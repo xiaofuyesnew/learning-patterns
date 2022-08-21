@@ -13,6 +13,8 @@
   "license": "CC BY-NC-SA 4.0",
   "devDependencies": {
     "@algolia/client-search": "^4.14.2",
+    "@highlightjs/vue-plugin": "^2.1.0",
+    "highlight.js": "^11.6.0",
     "sass": "^1.54.5",
     "vitepress": "1.0.0-alpha.9",
     "vue": "^3.2.37"

@@ -31,7 +31,7 @@ export default {
     sidebar: [
       {
         text: '设计模式',
-        collapsable: true,
+        collapsible: true,
         items: [
           {
             text: '概述',
@@ -109,7 +109,7 @@ export default {
       },
       {
         text: '渲染模式',
-        collapsable: true,
+        collapsible: true,
         items: [
           {
             text: '概述',
@@ -163,7 +163,7 @@ export default {
       },
       {
         text: '性能模式',
-        collapsable: true,
+        collapsible: true,
         items: [
           {
             text: '优化加载顺序',
