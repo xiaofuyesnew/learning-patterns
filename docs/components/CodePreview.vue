@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="code" v-if="code">
-      <hljs language="js" :code="code" />
+      <hljs language="jsx" :code="code" />
     </div>
     <div class="preview">
       <iframe class="content" :src="preview" />

@@ -245,10 +245,7 @@ Let's use the same example as we saw previously. However this time, the `counter
 - an `increment` method that increments the value of `count` by one
 - a `decrement` method that decrements the value of `count` by one
 
-<code-preview
-  :code="codes[0]"
-  preview="https://codesandbox.io/embed/competent-moon-rvzrr?expanddevtools=1&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
-/>
+<code-preview :code="codes[0]" preview="https://codesandbox.io/embed/competent-moon-rvzrr?expanddevtools=1&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1" />
 
 Since objects are passed by reference, both `redButton.js` and `blueButton.js` are importing a reference to the same `counter` object. Modifying the value of `count` in either of these files will modify the value on the `counter`, which is visible in both files.
 
