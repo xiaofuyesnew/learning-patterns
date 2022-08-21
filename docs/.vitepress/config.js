@@ -3,7 +3,7 @@ export default {
     ['link', {
       rel: 'icon',
       type: 'image/svg+xml',
-      href: '/logo.svg'
+      href: '/learning-patterns/logo.svg'
     }]
   ],
   base: '/learning-patterns/',
