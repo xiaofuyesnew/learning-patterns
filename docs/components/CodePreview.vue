@@ -12,7 +12,7 @@
 <script setup>
 import 'highlight.js/styles/github-dark-dimmed.css'
 import 'highlight.js/lib/common'
-import hljsVuePlugin from '@highlightjs/vue-plugin'
+import hljsVuePlugin from '@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.js'
 const hljs = hljsVuePlugin.component
 
 defineProps({
