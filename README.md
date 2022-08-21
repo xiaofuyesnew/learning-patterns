@@ -4,6 +4,8 @@
 
 [去阅读](https://xiaofuyesnew.github.io/learning-patterns/)
 
+[Patterns.dev](https://patterns.dev)
+
 [![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 本仓库内容及网站源码遵循 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)

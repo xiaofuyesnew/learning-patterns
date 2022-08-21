@@ -1,5 +1,5 @@
 ---
-title: '流式服务端渲染'
+title: '钩子模式'
 editLink: ''
 ---
 
@@ -7,7 +7,7 @@ editLink: ''
 import ArticleTitle from '../components/ArticleTitle.vue'
 </script>
 
-<article-title title="流式服务端渲染" sub="响应用户请求在服务端生成 HTML" />
+<article-title title="钩子模式" sub="使用函数在应用中的多个组件之间重用有状态逻辑" />
 
 ---
 

@@ -12,9 +12,9 @@
   "author": "",
   "license": "CC BY-NC-SA 4.0",
   "devDependencies": {
-    "@algolia/client-search": "^4.9.1",
-    "sass": "^1.54.4",
-    "vitepress": "1.0.0-alpha.5",
+    "@algolia/client-search": "^4.14.2",
+    "sass": "^1.54.5",
+    "vitepress": "1.0.0-alpha.9",
     "vue": "^3.2.37"
   }
 }

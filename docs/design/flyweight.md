@@ -1,5 +1,5 @@
 ---
-title: '流式服务端渲染'
+title: '享元模式'
 editLink: ''
 ---
 
@@ -7,7 +7,7 @@ editLink: ''
 import ArticleTitle from '../components/ArticleTitle.vue'
 </script>
 
-<article-title title="流式服务端渲染" sub="响应用户请求在服务端生成 HTML" />
+<article-title title="享元模式" sub="处理相同对象时重用现有实例" />
 
 ---
 
