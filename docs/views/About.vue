@@ -1,13 +1,17 @@
 <template>
   <VPTeamPage>
     <VPTeamPageTitle>
-      <template #title>
+      <!-- <template #title>
         关于
-      </template>
+      </template> -->
       <!-- <template #lead>
         本站内容由以下团队成员提供并创建
       </template> -->
     </VPTeamPageTitle>
+    <div class="slogan">我们为开发者构建惊世之作赋能</div>
+    <div class="video">
+      <iframe class="iframe" src="//player.bilibili.com/player.html?aid=472235333&bvid=BV1AT411w7Kp&cid=807657223&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
     <div class="wrap">
       <VPTeamMembers :members="members" />
       <div class="card">
@@ -39,6 +43,25 @@ const members = [
 </script>
 
 <style lang="scss" scoped>
+
+.slogan {
+  font-size: 2.25rem;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1em;
+}
+
+.video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 50px;
+
+  .iframe {
+    width: 600px;
+    height: 420px;
+  }
+}
 
 .wrap {
   margin:0 auto;

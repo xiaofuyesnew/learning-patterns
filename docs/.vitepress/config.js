@@ -31,6 +31,7 @@ export default {
     sidebar: [
       {
         text: '设计模式',
+        collapsable: true,
         items: [
           {
             text: '概述',
@@ -101,13 +102,14 @@ export default {
             link: '/design/command'
           },
           {
-            text: '学习 JavaScript 设计模式',
+            text: 'JavaScript 设计模式',
             link: '/design/js_design_patterns'
           },
         ]
       },
       {
         text: '渲染模式',
+        collapsable: true,
         items: [
           {
             text: '概述',
@@ -130,7 +132,7 @@ export default {
             link: '/rendering/server'
           },
           {
-            text: '服务端渲染',
+            text: '静态渲染',
             link: '/rendering/static'
           },
           {
@@ -147,10 +149,10 @@ export default {
           },
           {
             text: 'React 服务端组件',
-            link: '/rendering/sssr'
+            link: '/rendering/react_server_components'
           },
           {
-            text: '选择性补水',
+            text: '选择性注水',
             link: '/rendering/selective_hydration'
           },
           {
@@ -161,6 +163,7 @@ export default {
       },
       {
         text: '性能模式',
+        collapsable: true,
         items: [
           {
             text: '优化加载顺序',
@@ -179,7 +182,7 @@ export default {
             link: '/performance/import_on_visibility'
           },
           {
-            text: '交互时导入',
+            text: '可交互时导入',
             link: '/performance/import_on_interaction'
           },
           {
