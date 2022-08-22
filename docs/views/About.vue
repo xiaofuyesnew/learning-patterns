@@ -110,6 +110,7 @@
         font-size: 20px;
         margin: 0;
         font-weight: 600;
+        color: rgba(255, 255, 255, 0.87);
       }
 
       .affiliation {
@@ -117,7 +118,7 @@
         font-size: 16px;
         margin: 0;
         font-weight: 500;
-        color: var(--vp-c-text-2);
+        color: rgba(235, 235, 235, 0.6);
       }
 
       .links {
@@ -134,7 +135,7 @@
           align-items: center;
           width: 36px;
           height: 36px;
-          color: var(--vp-c-text-2);
+          color: rgba(255, 255, 255, .87);
           transition: color .5s;
 
           svg {
