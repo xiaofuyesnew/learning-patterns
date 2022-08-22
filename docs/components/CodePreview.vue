@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="code" v-if="code">
-      <hljs language="jsx" :code="code" />
+      <highlightjs language="javascript" v-if="code" :code="code" />
     </div>
     <div class="preview">
       <iframe class="content" :src="preview" />
@@ -10,10 +10,6 @@
 </template>
 
 <script setup>
-import 'highlight.js/styles/github-dark-dimmed.css'
-import 'highlight.js/lib/common'
-import hljsVuePlugin from '@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.js'
-const hljs = hljsVuePlugin.component
 
 defineProps({
   code: {
@@ -25,6 +21,7 @@ defineProps({
     required: true
   }
 })
+
 </script>
 
 <style lang="scss" scoped>

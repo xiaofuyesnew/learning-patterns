@@ -4,6 +4,7 @@ specifiers:
   '@algolia/client-search': ^4.14.2
   '@highlightjs/vue-plugin': ^2.1.0
   highlight.js: ^11.6.0
+  rainbow-code: ^2.1.7
   sass: ^1.54.5
   vitepress: 1.0.0-alpha.9
   vue: ^3.2.37
@@ -12,6 +13,7 @@ devDependencies:
   '@algolia/client-search': 4.14.2
   '@highlightjs/vue-plugin': 2.1.0_67te4p3ga56i3himeolvr6h3ke
   highlight.js: 11.6.0
+  rainbow-code: 2.1.7
   sass: 1.54.5
   vitepress: 1.0.0-alpha.9_yy4ya75sv2qehmfswaatsowshu
   vue: 3.2.37
@@ -734,6 +736,12 @@ packages:
     resolution: {integrity: sha512-w0mCL5vICUAZrh1DuHEdOWBjxdO62lvcO++jbzr8UhhYcTbFkpegLH9XX+7MadjTl/y0feoqwQ/zAnzkc/EGog==}
     dev: true
 
+  /rainbow-code/2.1.7:
+    resolution: {integrity: sha512-MuA4/PlfE0uJwxG3/MhylsdnhLDKZcFJfsDrVQX6LrFH2qfaLNB0TdbSupohrPRWgdIS3uBn1gCp05EkRRBtgw==}
+    dependencies:
+      web-worker: 1.0.0
+    dev: true
+
   /readdirp/3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
@@ -891,4 +899,8 @@ packages:
       '@vue/runtime-dom': 3.2.37
       '@vue/server-renderer': 3.2.37_vue@3.2.37
       '@vue/shared': 3.2.37
+    dev: true
+
+  /web-worker/1.0.0:
+    resolution: {integrity: sha512-BzuMqeKVkKKwHV6tJuwePFcxYMxvC97D448mXTgh/CxXAB4sRtoV26gRPN+JDxsXRR7QZyioMV9O6NzQaASf7Q==}
     dev: true
