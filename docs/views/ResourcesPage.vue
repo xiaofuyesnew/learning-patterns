@@ -83,7 +83,7 @@ const communityList = [
 
     .item {
       width: 30%;
-      height: 290px;
+      height: 270px;
       margin-right: 5%;
       margin-bottom: 40px;
       &:nth-child(3n) {
