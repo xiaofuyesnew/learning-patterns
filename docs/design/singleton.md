@@ -63,16 +63,6 @@ export default class SuperCounter {
 
 </script>
 
-<style
-  lang="scss"
-  scoped
->
-  .pink {
-    color:#FF42A1;
-    font-weight:bolder;
-  }
-</style>
-
 <article-title
   title="单例模式"
   sub="在应用中共享同一个全局实例"

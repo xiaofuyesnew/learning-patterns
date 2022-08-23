@@ -13,6 +13,7 @@
   - [x] 单例模式
   - [x] 代理模式
   - [ ] 提供者模式
+  - [ ] 观察者模式
   - [ ] 钩子模式
 
 [![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
