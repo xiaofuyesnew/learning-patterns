@@ -80,12 +80,117 @@ export default class Counter extends React.Component {
       </div>
     );
   }
+}`,
+  `import React, { useState } from "react";
+
+  export default function Input() {
+    const [input, setInput] = useState("");
+
+    return (
+      <input
+        onChange={e => setInput(e.target.value)}
+        value={input}
+        placeholder="Type something..."
+      />
+    );
+  }`,
+  `import React, { useState, useEffect } from "react";
+
+export default function Input() {
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    console.log(\`The user typed \${input}\`);
+  }, [input]);
+
+  return (
+    <input
+      onChange={e => setInput(e.target.value)}
+      value={input}
+      placeholder="Type something..."
+    />
+  );
+}`,
+  `import React from "react";
+import useKeyPress from "./useKeyPress";
+
+export default function Input() {
+  const [input, setInput] = React.useState("");
+  const pressQ = useKeyPress("q");
+  const pressW = useKeyPress("w");
+  const pressL = useKeyPress("l");
+
+  React.useEffect(() => {
+    console.log(\`The user pressed Q!\`);
+  }, [pressQ]);
+
+  React.useEffect(() => {
+    console.log(\`The user pressed W!\`);
+  }, [pressW]);
+
+  React.useEffect(() => {
+    console.log(\`The user pressed L!\`);
+  }, [pressL]);
+
+  return (
+    <input
+      onChange={e => setInput(e.target.value)}
+      value={input}
+      placeholder="Type something..."
+    />
+  );
+}`,
+  `import React, { useState, useEffect } from "react";
+import "./styles.css";
+
+import { Count } from "./Count";
+import { Width } from "./Width";
+
+function useCounter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
+  return { count, increment, decrement };
+}
+
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.addEventListener("resize", handleResize);
+  });
+
+  return width;
+}
+
+export default function App() {
+  const counter = useCounter();
+  const width = useWindowWidth();
+
+  return (
+    <div className="App">
+      <Count
+        count={counter.count}
+        increment={counter.increment}
+        decrement={counter.decrement}
+      />
+      <div id="divider" />
+      <Width width={width} />
+    </div>
+  );
 }`
 ]
 
 </script>
 
-<article-title title="钩子模式" sub="使用函数在应用中的多个组件之间重用有状态逻辑" />
+<article-title
+  title="钩子模式"
+  sub="使用函数在应用中的多个组件之间重用有状态逻辑"
+/>
 
 ---
 
@@ -215,4 +320,329 @@ Lifecycle methods also require quite a lot of duplication in the code. Let's tak
 
 The way the `App` component is structured can be visualized as the following:
 
-![](/images/clasvshoks1.001.png)
+![Flow chart](/images/clasvshoks1.001.png)
+
+Although this is a small component, the logic within the component is already quite tangled. Whereas certain parts are specific for the `counter` logic, other parts are specific for the `width` logic. As your component grows, it can get increasingly difficult to structure logic within your component, find related logic within the component.
+
+Besides tangled logic, we're also **duplicating** some logic within the lifecycle methods. In both `componentDidMount` and `componentWillUnmount`, we're customizing the behavior of the app based on the window's `resize` event.
+
+## hooks
+
+It's quite clear that class components aren't always a great feature in React. In order to solve the common issues that React developers can run into when using class components, React introduced `React Hooks`. React Hooks are functions that you can use to manage a components state and lifecycle methods. React Hooks make it possible to:
+
+- add state to a functional component
+- manage a component's lifecycle without having to use lifecycle methods such as `componentDidMount` and `componentWillUnmount`
+- reuse the same stateful logic among multiple components throughout the app
+
+First, let's take a look at how we can add state to a functional component, using React Hooks.
+
+### State Hook
+
+React provides a hook that manages state within a functional component, called `useState`.
+
+Let's see how a class component can be restructured into a functional component, using the `useState` hook. We have a class component called `Input`, which simply renders an input field. The value of `input` in the state updates, whenever the user types anything in the input field.
+
+```JavaScript
+class Input extends React.Component {
+  constructor() {
+    super();
+    this.state = { input: "" };
+
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput(e) {
+    this.setState({ input: e.target.value });
+  }
+
+  render() {
+    <input onChange={handleInput} value={this.state.input} />;
+  }
+}
+```
+
+In order to use the `useState` hook, we need to access the `useState` method that React provides for us. The `useState` method expects an argument: this is the initial value of the state, an empty string in this case.
+
+We can destructure two values from the `useState` method:
+
+1. The **current value** of the state.
+2. The **method with which we can update** the state.
+
+```JavaScript
+const [value, setValue] = React.useState(initialValue);
+```
+
+The first value can be compared to a class component's `this.state.[value]`. The second value can be compared to a class component's `this.setState` method.
+
+Since we're dealing with the value of an `input`, let's call the current value of the state input, and the method in order to update the state `setInput`. The initial value should be an empty string.
+
+```JavaScript
+const [input, setInput] = React.useState("");
+```
+
+We can now refactor the `Input` class component into a stateful functional component.
+
+```JavaScript
+function Input() {
+  const [input, setInput] = React.useState("");
+
+  return <input onChange={(e) => setInput(e.target.value)} value={input} />;
+}
+```
+
+The value of the `input` field is equal to the current value of the `input` state, just like in the class component example. When the user types in the input field, the value of the `input` state updates accordingly, using the `setInput` method.
+
+<code-preview
+  :code="codes[2]"
+  preview="https://codesandbox.io/embed/nervous-hoover-oicu6?expanddevtools=0&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
+/>
+
+## Effect Hook
+
+We've seen we can use the `useState` component to handle state within a functional component, but another benefit of class components was the possibility to add lifecycle methods to a component.
+
+With the `useEffect` hook, we can "hook into" a components lifecycle. The `useEffect` hook effectively combines the `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle methods.
+
+```JavaScript
+componentDidMount() { ... }
+useEffect(() => { ... }, [])
+
+componentWillUnmount() { ... }
+useEffect(() => { return () => { ... } }, [])
+
+componentDidUpdate() { ... }
+useEffect(() => { ... })
+```
+
+Let's use the input example we used in the State Hook section. Whenever the user is typing anything in the input field, we also want to log that value to the console.
+
+We need to use a `useEffect` hook that "listens" to the `input` value. We can do so, by adding `input` to the **dependency array** of the `useEffect` hook. The dependency array is the second argument that the `useEffect` hook receives.
+
+```JavaScript
+useEffect(() => {
+  console.log(`The user typed ${input}`);
+}, [input]);
+```
+
+Let's try it out!
+
+<code-preview
+  :code="codes[3]"
+  preview="https://codesandbox.io/embed/blissful-ramanujan-p237n?expanddevtools=1&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
+/>
+
+The value of the input now gets logged to the console whenever the user types a value.
+
+## Custom Hooks
+
+Besides the built-in hooks that React provides (`useState`, `useEffect`, `useReducer`, `useRef`, `useContext`, `useMemo`, `useImperativeHandle`, `useLayoutEffect`, `useDebugValue`, `useCallback`), we can easily create our own custom hooks.
+
+You may have noticed that all hooks start with `use`. It's important to start your hooks with `use` in order for React to check if it violates the [rules of Hooks](https://reactjs.org/docs/hooks-rules.html).
+
+Let's say we want to keep track of certain keys the user may press when writing the input. Our custom hook should be able to receive the key we want to target as its argument.
+
+```JavaScript
+function useKeyPress(targetKey) {}
+```
+
+We want to add a `keydown` and `keyup` event listener to the key that the user passed as an argument. If the user pressed that key, meaning the `keydown` event gets triggered, the state within the hook should toggle to `true`. Else, when the user stops pressing that button, the `keyup` event gets triggered and the state toggles to `false`.
+
+```JavaScript
+function useKeyPress(targetKey) {
+  const [keyPressed, setKeyPressed] = React.useState(false);
+
+  function handleDown({ key }) {
+    if (key === targetKey) {
+      setKeyPressed(true);
+    }
+  }
+
+  function handleUp({ key }) {
+    if (key === targetKey) {
+      setKeyPressed(false);
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleDown);
+    window.addEventListener("keyup", handleUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleDown);
+      window.removeEventListener("keyup", handleUp);
+    };
+  }, []);
+
+  return keyPressed;
+}
+```
+
+Perfect! We can use this custom hook in our input application. Let's log to the console whenever the user presses the `q`, `l` or `w` key.
+
+<code-preview
+  :code="codes[4]"
+  preview="https://codesandbox.io/embed/billowing-pine-xplez?expanddevtools=0&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
+/>
+
+Instead of keeping the key press logic local to the `Input` component, we can now reuse the `useKeyPress` hook throughout multiple components, without having to rewrite the same logic over and over.
+
+Another great advantage of Hooks, is that the community can build and share hooks. We just wrote the `useKeyPress` hook ourselves, but that actually wasn't necessary at all! The [hook was already built](https://github.com/streamich/react-use/blob/master/docs/useKeyPress.md) by someone else and ready to use in our application if we just installed it!
+
+Here are some websites that list all the hooks built by the community, and ready to use in your application.
+
+- [React Use](https://github.com/streamich/react-use)
+- [useHooks](https://usehooks.com/)
+- [Collection of React Hooks](https://nikgraf.github.io/react-hooks/)
+
+---
+
+Let's rewrite the counter and width example shown in the previous section. Instead of using a class component, we'll rewrite the app using React Hooks.
+
+<code-preview
+  :code="codes[5]"
+  preview="https://codesandbox.io/embed/eloquent-bhabha-2w0ll?expanddevtools=0&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
+/>
+
+We broke the logic of the `App` function into several pieces:
+
+- `useCounter`: A custom hook that returns the current value of `count`, an `increment` method, and a `decrement` method.
+- `useWindowWidth`: A custom hook that returns the window's current width.
+- `App`: A functional, stateful component that returns the `Counter` and `Width` component.
+
+By using React Hooks instead of a class component, we were able to break the logic down into smaller, reusable pieces that separated the logic.
+
+Let's visualize the changes we just made, compared to the old `App` class component.
+
+![Flow chart](/images/classicalvshooks2.001.png)
+
+Using React Hooks just made it much clearer to **separate the logic** of our component into several smaller pieces. Reusing the same stateful logic just became much easier, and we no longer have to rewrite functional components into class components if we want to make the component stateful. A good knowledge of ES2015 classes is no longer required, and having reusable stateful logic increases the testability, flexibility and readability of components.
+
+## Additional Hooks guidance
+
+### Adding Hooks
+
+Like other components, there are special functions that are used when you want to add Hooks to the code you have written. Here's a brief overview of some common Hook functions:
+
+#### 1. useState
+
+The `useState` Hook enables developers to update and manipulate state inside function components without needing to convert it to a class component. One advantage of this Hook is that it is simple and does not require as much complexity as other React Hooks.
+
+#### 2. useEffect
+
+The `useEffect` Hook is used to run code during major lifecycle events in a function component. The main body of a function component does not allow mutations, subscriptions, timers, logging, and other side effects. If they are allowed, it could lead to confusing bugs and inconsistencies within the UI. The useEffect hook prevents all of these "side effects" and allows the UI to run smoothly. It is a combination of `componentDidMount` , `componentDidUpdate` , and `componentWillUnmount`, all in one place.
+
+#### 3. useContext
+
+The `useContext` Hook accepts a context object, which is the value returned from `React.createcontext`, and returns the current context value for that context. The useContext Hook also works with the React Context API in order to share data throughout the app without the need to pass your app props down through various levels.
+
+It should be noted that the argument passed to the `useContext` hook must be the context object itself and any component calling the `useContext` always re-renders whenever the context value changes.
+
+#### 4. useReducer
+
+The `useReducer` Hook gives an alternative to `setState` and is especially preferable to it when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. It takes on a `reducer` function and an initial state input and returns the current state and a `dispatch` function as output by means of array destructuring. `useReducer` also optimizes the performance of components that trigger deep updates.
+
+**Pros and Cons of using Hooks**
+
+Here are some benefits of making use of Hooks:
+
+**Fewer lines of code** Hooks allows you group code by concern and functionality, and not by lifecycle. This makes the code not only cleaner and concise but also shorter. Below is a comparison of a simple stateful component of a searchable product data table using React, and how it looks in Hooks after using the `useState` keyword.
+
+**Stateful components**
+
+```JavaScript
+class TweetSearchResults extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        filterText: '',
+        inThisLocation: false
+      };
+
+      this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+      this.handleInThisLocationChange = this.handleInThisLocationChange.bind(this);
+    }
+
+    handleFilterTextChange(filterText) {
+      this.setState({
+        filterText: filterText
+      });
+    }
+
+    handleInThisLocationChange(inThisLocation) {
+      this.setState({
+        inThisLocation: inThisLocation
+      })
+    }
+
+    render() {
+      return (
+        <div>
+          <SearchBar
+            filterText={this.state.filterText}
+            inThisLocation={this.state.inThisLocation}
+            onFilterTextChange={this.handleFilterTextChange}
+            onInThisLocationChange={this.handleInThisLocationChange}
+          />
+          <TweetList
+            tweets={this.props.tweets}
+            filterText={this.state.filterText}
+            inThisLocation={this.state.inThisLocation}
+          />
+        </div>
+      );
+    }
+  }
+```
+
+**Same component with Hooks**
+
+```JavaScript
+const TweetSearchResults = ({tweets}) => {
+  const [filterText, setFilterText] = useState('');
+  const [inThisLocation, setInThisLocation] = useState(false);
+  return (
+    <div>
+      <SearchBar
+        filterText={filterText}
+        inThisLocation={inThisLocation}
+        setFilterText={setFilterText}
+        setInThisLocation={setInThisLocation}
+      />
+      <TweetList
+        tweets={tweets}
+        filterText={filterText}
+        inThisLocation={inThisLocation}
+      />
+    </div>
+  );
+}
+```
+
+**Simplifies complex components**
+
+JavaScript classes can be difficult to manage, hard to use with hot reloading and may not minify as well. React Hooks solves these problems and ensures functional programming is made easy. With the implementation of Hooks, We don't need to have class components.
+
+**Reusing stateful logic**
+
+Classes in JavaScript encourage multiple levels of inheritance that quickly increase overall complexity and potential for errors. However, Hooks allow you to use state, and other React features without writing a class. With React, you can always reuse stateful logic without the need to rewrite the code over and over again. This reduces the chances of errors and allows for composition with plain functions.
+
+**Sharing non-visual logic**
+
+Until the implementation of Hooks, React had no way of extracting and sharing non-visual logic. This eventually led to more complexities, such as the HOC patterns and Render props, just to solve a common problem. But, the introduction of Hooks has solved this problem because it allows for the extraction of stateful logic to a simple JavaScript function.
+
+There are of course some potential downsides to Hooks worth keeping in mind:
+
+- Have to respect its rules, without a linter plugin, it is difficult to know which rule has been broken.
+- Need a considerable time practicing to use properly (Exp: useEffect).
+- Be aware of the wrong use (Exp: useCallback, useMemo).
+
+### React Hooks vs Classes
+
+When Hooks were introduced to React, it created a new problem: how do we know when to use function components with Hooks and class components? With the help of Hooks, it is possible to get state and partial lifecycle Hooks even in function components. Hooks also allow you to use local state and other React features without writing a class.
+
+Here are some differences between Hooks and Classes to help you decide:
+
+|**React Hooks**| **Classes**|
+| ---- | ---- |
+|It helps avoid multiple hierarchies and make code clearer|Generally, when you use HOC or renderProps, you have to restructure your App with multiple hierarchies when you try to see it in DevTools|
+|It provides uniformity across React components.|Classes confuse both humans and machines due to the need to understand binding and the context in which functions are called.|
