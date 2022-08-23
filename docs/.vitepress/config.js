@@ -17,6 +17,10 @@ export default {
         link: 'https://discord.gg/pF5b4WtA'
       }
     ],
+    editLink: {
+      pattern: 'https://github.com/xiaofuyesnew/learning-patterns/tree/main/docs/:path',
+      text: '在 GitHub 上编辑本页'
+    },
     nav: [
       {
         text: '开始阅读', items: [

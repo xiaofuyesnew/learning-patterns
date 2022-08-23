@@ -1,6 +1,6 @@
 ---
 title: '设计模式-概述'
-editLink: ''
+editLink: true
 ---
 
 <script setup>

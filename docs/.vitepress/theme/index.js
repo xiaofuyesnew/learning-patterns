@@ -9,7 +9,7 @@ import hljsVuePlugin from '@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.
 hljs.registerLanguage('javascript', javascript)
 
 export default {
-  ...(DefaultTheme || {}),
+  ...DefaultTheme,
   enhanceApp({ app }) {
     app.use(hljsVuePlugin)
   }
