@@ -10,6 +10,17 @@ export default {
   title: 'Patterns',
   description: 'Learn JavaScript design and performance patterns for building more powerful web applications.',
   themeConfig: {
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/xiaofuyesnew/learning-patterns' },
+      {
+        icon: 'discord',
+        link: 'https://discord.gg/pF5b4WtA'
+      },
+      {
+        icon: 'twitter',
+        link: 'https://twitter.com/xiaofuyesnew'
+      }
+    ],
     editLink: {
       pattern: 'https://github.com/xiaofuyesnew/learning-patterns/tree/main/docs/:path',
       text: '在 GitHub 上编辑本页'
@@ -27,6 +38,8 @@ export default {
         ]
       },
       { text: '关于', link: '/about' },
+      { text: '资源', link: '/resources' },
+      { text: '观点', link: '/insights' },
     ],
     footer: {
       message: '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;display:inline;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>',
