@@ -1,6 +1,7 @@
 ---
 layout: page
 sidebar: false
+title: '关于'
 ---
 
 <script setup>
