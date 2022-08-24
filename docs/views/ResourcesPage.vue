@@ -15,37 +15,37 @@ const communityList = [
   {
     // text: 'Vue.js Design Patterns',
     text: 'Vue.js 设计模式',
-    icon: '/svg/vue.svg',
+    icon: '/learning-patterns/svg/vue.svg',
     path: 'https://learn-vuejs.github.io/vue-patterns/patterns/'
   },
   {
     // text: 'Advanced React Patterns',
     text: '先进的 React 模式',
-    icon: '/svg/react.svg',
+    icon: '/learning-patterns/svg/react.svg',
     path: 'https://github.com/kentcdodds/advanced-react-patterns/'
   },
   {
     // text: 'Angular Component Patterns',
     text: 'Angular 组件模式',
-    icon: '/svg/angular.svg',
+    icon: '/learning-patterns/svg/angular.svg',
     path: 'https://itnext.io/angular-effective-component-patterns-f5f7f08e2072'
   },
   {
     // text: 'TypeScript/React Component Patterns',
     text: 'TypeScript/React 组件模式',
-    icon: '/svg/typescript.svg',
+    icon: '/learning-patterns/svg/typescript.svg',
     path: 'https://fettblog.eu/typescript-react-component-patterns/'
   },
   {
     // text: 'Web Component Patterns',
     text: 'Web Component 模式',
-    icon: '/svg/web_component.svg',
+    icon: '/learning-patterns/svg/web_component.svg',
     path: 'https://open-wc.org/guides/developing-components/code-examples/'
   },
   {
     // text: 'Node.js Design Patterns',
     text: 'Node.js 设计模式',
-    icon: '/svg/nodejs.svg',
+    icon: '/learning-patterns/svg/nodejs.svg',
     path: 'https://github.com/PacktPublishing/Node.js-Design-Patterns-Third-Edition'
   },
   {
@@ -57,13 +57,13 @@ const communityList = [
   {
     // text: 'Clean Code Angular',
     text: 'Angular 简洁之道',
-    icon: '/svg/angular.svg',
+    icon: '/learning-patterns/svg/angular.svg',
     path: 'https://github.com/lubkoKuzenko/angular-clean-code'
   },
   {
     // text: 'RxJs Reactive Patterns',
     text: 'RxJs 响应性模式',
-    icon: '/svg/rxjs.svg',
+    icon: '/learning-patterns/svg/rxjs.svg',
     path: 'https://github.com/bitaemi/rxjs-reactive-patterns'
   }
 ]
