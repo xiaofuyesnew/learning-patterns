@@ -31,6 +31,8 @@ defineProps({
   -webkit-background-clip: text;
   background-clip: text;
   background-image: linear-gradient(to right, #ec008c, #0070f3);
+  font-size: 32px;
+  line-height: 1em;
 }
 
 .sub-title {

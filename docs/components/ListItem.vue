@@ -42,6 +42,7 @@ defineProps({
     opacity: .4;
     width: calc(100% - 20px);
     text-align: center;
+    color: #fff;
     transition: all .3s ease-in-out;
   }
 
