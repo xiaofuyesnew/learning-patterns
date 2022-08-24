@@ -1,9 +1,13 @@
 <template>
   <article-title title="观点" sub="关于工程设计和性能的启发性观点。选自社区博客和推文。" />
+  <div class="list">
+    <insight-item class="item" v-for="item in insightsList" :item="item" :key="item.name" />
+  </div>
 </template>
 
 <script setup>
 import ArticleTitle from '../components/ArticleTitle.vue'
+import InsightItem from '../components/InsightItem.vue';
 
 const insightsList = [
   {
@@ -69,11 +73,87 @@ const insightsList = [
     link: 'https://twitter.com/sebmarkbage/status/1156981610434056192',
     // insight: 'My philosophy on abstractions (like React components): If your abstraction works in 9 out of 10 cases. That's a good abstraction. If it's insufficient in one of those cases, then copy/paste (i.e. decompose into its pieces) and tweak it for that case. Don't change the abstraction.',
     insight: '我对抽象的哲学（如 React 组件）：如果你的抽象在 10 个案例中有 9 个有效。那是好的抽象。如果在其中一种情况下还不够，那么复制/粘贴（即分解成小的片段）并针对这种情况进行调整。不要改变抽象。'
+  },
+  {
+    name: 'Callie Riggins',
+    workWith: 'Airbnb',
+    avatar: '/images/dalao/1HgsF4.jpg',
+    link: 'https://medium.com/airbnb-engineering/building-a-faster-web-experience-with-the-posttask-scheduler-276b83454e91#:~:text=It%E2%80%99s%20important%20to,moment%20has%20completed.',
+    // insight: 'Most sites load a large amount of third-party libraries. It's important to measure and understand the impact these have on a user's initial loading experience. Airbnb prioritizes getting to the point where a user can enter a search term, which requires us to load some JavaScript and “hydrate” our page with React. It might make sense to defer certain tasks until that key moment has completed.',
+    insight: '大多数站点会加载大量第三方库。衡量和了解这些对用户初始加载体验的影响非常重要。Airbnb 优先考虑用户可以输入搜索词的位置，这需要我们加载一些 JavaScript 并使用 React “注水”到我们的页面。在这一关键时刻完成之前推迟某些任务可能是有意义的。'
+  },
+  {
+    name: 'Jason Miller',
+    workWith: 'Preact',
+    avatar: '/images/dalao/19s1SS.jpg',
+    link: 'https://jasonformat.com/islands-architecture/',
+    // insight: 'When it comes down to it, shipping an architecture that requires less code to do something is the type of long-term benefit your future self (or coworkers) will thank you for. It's possible — likely, even — that adopting a model like this requires more up-front design thinking. There are far few batteries-included options available for decomposing apps into independently deliverable widgets.',
+    insight: '归根结底，交付一个需要更少代码来的架构是未来的你自己（或同事）会感谢你的一种长期收益的做法。有可能——甚至很可能——采用这样的模型需要更多的前期设计思维。很少有自备全套工具库的选项可用于将应用程序分解为可独立交付的小部件。'
+  },
+  {
+    name: 'Lauren Tan',
+    workWith: 'React',
+    avatar: '/images/dalao/1wpDkp.jpg',
+    link: 'https://twitter.com/sugarpirate_/status/1341131914078511110',
+    // insight: 'In "thick" client apps, product code (everything else) takes up the majority of the client bundle size. There's a real opp here to move that into Server Components which can reduce that footprint significantly. As an example, consider the case of deeply wrapped components that ultimately render to a single div. Server Components could help remove that abstraction tax.',
+    insight: '在“重”客户端应用程序中，产品代码（和其他所有内容）占据了客户端包大小的大部分。这里有一个真正的机会，可以将其转移到服务器组件中，这可以显着减少占用空间。例如，考虑最终渲染为单个 div 的深度包装组件的情况。服务器组件可以帮助消除这种抽象税。'
+  },
+  {
+    name: 'Ben Hong',
+    workWith: 'Vue.js',
+    avatar: '/images/dalao/hHNrq.jpg',
+    link: 'https://www.vuemastery.com/courses/component-design-patterns/introduction/#:~:text=In%20other%20words,given%20another%20context.',
+    // insight: 'If you feel like you have good reason to believe a best practice or technique is not a good fit for your app, then you should trust your instincts and move forward with your solution. Sometimes a technique or best practice that might work well in many contexts can actually be an anti-pattern given another context.',
+    insight: '如果你觉得你有充分的理由相信最佳实践或技术不适合你的应用，那么你应该相信你的直觉并继续你自己的解决方案。有时，在许多情况下可能运行良好的技术或最佳实践实际上可能在另一个给定上下文中的反模式。'
+  },
+  {
+    name: 'Nolan Lawson',
+    workWith: 'Salesforce',
+    avatar: '/images/dalao/Z3WClf-283842.png',
+    link: 'https://nolanlawson.com/2021/02/23/javascript-performance-beyond-bundle-size/#:~:text=Performance%20is%20a%20multi%2Dfaceted%20thing.%20It%20would%20be%20great%20if%20we%20could%20reduce%20it%20down%20to%20a%20single%20metric%20such%20as%20bundle%20size%2C%20but%20if%20you%20really%20want%20to%20cover%20all%20the%20bases%2C%20there%20are%20a%20lot%20of%20different%20angles%20to%20consider.',
+    // insight: 'Performance is a multi-faceted thing. It would be great if we could reduce it down to a single metric such as bundle size, but if you really want to cover all the bases, there are a lot of different angles to consider. These can include runtime CPU costs, power consumption and memory.',
+    insight: '性能是一个多方面的东西。如果我们可以将它减少到一个单一的指标，比如捆绑大小，那就太好了，但是如果你真的想涵盖所有的基础，那么有很多不同的角度需要考虑。这些可能包括运行时 CPU 成本、功耗和内存。'
+  },
+  {
+    name: 'Fred K Schott',
+    workWith: 'Astro / Snowpack',
+    avatar: '/images/dalao/Z6p1u1.jpg',
+    link: 'https://dev.to/fredkschott/5-things-i-learned-while-building-snowpack-to-20-000-stars-b9d#:~:text=When%20you%27re%20working,a%20bit%20messy.',
+    // insight: 'When you're working on a new project, you rarely know what code will be important long-term and what code is about to be deleted. I've thrown away enough code in my career to have learned that there's sometimes value in fast, messy coding. When you're starting a new project, it's okay to be a bit messy.',
+    insight: '当你在一个新项目上工作时，你很少知道哪些代码会长期重要，哪些代码将被删除。在我的职业生涯中，我已经丢弃了足够多的代码，从而了解到有时快速、混乱的编码是有价值的。当你开始一个新项目时，有点混乱是可以的。'
+  },
+  {
+    name: 'Shane Osbourne',
+    workWith: 'DuckDuckGo',
+    avatar: '/images/dalao/Z1vmwo7.png',
+    link: 'https://twitter.com/shaneOsbourne/status/1360717747970269193',
+    // insight: 'It's not enough to simply 'disable all JavaScript' and pretend that's enough for most sites. In reality we want the best of all worlds. We want to develop in the React/component model (hot reloading etc) -> have it create HTML at build time ~> only load tiny JS when needed.',
+    insight: '仅仅“禁用所有 JavaScript”并假装这对大多数网站来说就足够了是不够的。实际上，我们想要世界上最好的。我们想在 React/component 模型中开发（热重载等）-> 让它在构建时创建 HTML ~> 只在需要时加载微小的 JS。'
+  },
+  {
+    name: 'Jean Yang',
+    workWith: 'Akita',
+    avatar: '/images/dalao/1I3PJQ.jpg',
+    link: 'https://twitter.com/jeanqasaur/status/1455589141299675139',
+    // insight: 'The solutions that engineers at (large companies) come up with aren't for the vast majority of software shops: they're often best for big companies that can afford to set a high engineering bar, that can afford large infrastructure teams and ops teams. There's a huge gap between what developer-influencers are writing about, versus the daily reality of most developers.',
+    insight: '（大公司）工程师提出的解决方案不适用于绝大多数软件商店：它们通常最适合能够负担得起设置高工程标准的大公司，能够负担得起大型基础设施团队和运营团队。有影响力的开发人员所写的内容与大多数开发人员的日常现实之间存在巨大差距。'
   }
 ]
 
 </script>
 
 <style lang="scss" scoped>
+.list {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 50px 0;
 
+  .item {
+    width: 48%;
+    margin-bottom: 30px;
+  }
+}
 </style>
