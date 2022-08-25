@@ -8,8 +8,8 @@
       </div>
     </div>
     <div class="bottom">
-      <div class="insight">{{ item.insight }}</div>
-      <a class="link" :href="item.link"></a>
+      <div class="insight" v-html="item.insight" />
+      <a class="link" target="_blank" :href="item.link"></a>
     </div>
   </div>
 </template>
@@ -85,7 +85,8 @@ defineProps({
       font-size: 1rem;
       color: rgb(153 153 153);
       line-height: 1.8;
-      padding-top: 20px;
+      padding-top: 10px;
+      width: 100%;
     }
 
     .link {
