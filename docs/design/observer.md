@@ -1,6 +1,6 @@
 ---
 title: '观察者模式'
-editLink: ''
+editLink: true
 ---
 
 <script

@@ -1,9 +1,11 @@
 ---
 title: '代理模式'
-editLink: ''
+editLink: true
 ---
 
-<script setup>
+<script
+  setup
+>
 import ArticleTitle from '../components/ArticleTitle.vue'
 import BiliBili from '../components/BiliBili.vue'
 import CodePreview from '../components/CodePreview.vue'
@@ -81,7 +83,10 @@ personProxy.name = "Jane Doe";`
 
 </script>
 
-<article-title title="代理模式" sub="拦截和控制目标对象的交互" />
+<article-title
+  title="代理模式"
+  sub="拦截和控制目标对象的交互"
+/>
 
 ---
 
