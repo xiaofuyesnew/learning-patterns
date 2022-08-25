@@ -70,7 +70,7 @@ Ideally, we want to enforce <span class="pink" title="A design principle for sep
 ---
 
 <bili-bili
-  video=""
+  video="//player.bilibili.com/player.html?aid=814979843&bvid=BV1vG4y1k7Bz&cid=814221752&page=1"
 />
 
 Fetching the dog images deals with **application logic**, whereas displaying the images only deals with the **view**.
@@ -103,8 +103,8 @@ In our example, we want to pass dog images to the `DogsImages` presentational co
 
 Combining these two components together makes it possible to separate handling application logic with the view.
 
-<bili-bili 
-  video=""
+<bili-bili
+  video="//player.bilibili.com/player.html?aid=387384021&bvid=BV1kd4y1d71v&cid=814221815&page=1"
 />
 
 ## Hooks
@@ -136,8 +136,8 @@ By using this hook, we no longer need the wrapping `DogImagesContainer` containe
 
 By using the `useDogImages` hook, we still separated the application logic from the view. We're simply using the returned data from the `useDogImages` hook, without modifying that data within the `DogImages` component.
 
-<bili-bili 
-  video=""
+<bili-bili
+  video="//player.bilibili.com/player.html?aid=302483064&bvid=BV1xP411L7o7&cid=814221836&page=1"
 />
 
 Hooks make it easy to separate logic and view in a component, just like the Container/Presentational pattern. It saves us the extra layer that was necessary in order to wrap the presentational component within the container component.
