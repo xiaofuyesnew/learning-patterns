@@ -258,7 +258,7 @@ With RxJS, we can create observables and subscribe to certain events! Let’s lo
 
 RxJS has tons of built-in features and examples that work with the observable pattern.
 
-## Props
+## Pros
 
 Using the observer pattern is a great way to enforce <span class="pink">separation of concerns</span> and the single-responsiblity principle. The observer objects aren’t tightly coupled to the observable object, and can be (de)coupled at any time. The observable object is responsible for monitoring the events, while the observers simply handle the received data.
 
