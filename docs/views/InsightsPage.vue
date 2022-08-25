@@ -137,6 +137,150 @@ const insightsList = [
     link: 'https://twitter.com/jeanqasaur/status/1455589141299675139',
     // insight: 'The solutions that engineers at (large companies) come up with aren't for the vast majority of software shops: they're often best for big companies that can afford to set a high engineering bar, that can afford large infrastructure teams and ops teams. There's a huge gap between what developer-influencers are writing about, versus the daily reality of most developers.',
     insight: '（大公司）工程师提出的解决方案不适用于绝大多数软件商店：它们通常最适合能够负担得起设置高工程标准的大公司，能够负担得起大型基础设施团队和运营团队。有影响力的开发人员所写的内容与大多数开发人员的日常现实之间存在巨大差距。'
+  },
+  {
+    name: 'Minko Gechev',
+    workWith: 'Angular',
+    avatar: '/learning-patterns/images/dalao/2nxdjz.jpg',
+    link: 'https://twitter.com/mgechev/status/1104950408542281731',
+    // insight: 'UI is a composition of components (Angular, React, etc), with composite and leaf components. Similarly, in the file system we have directories and files. Since the component tree and the file system have the same structure we can apply the same algorithms on top of them.',
+    insight: 'UI 是组件（Angular、React 等）的组合，具有复合组件和叶子组件。同样，在文件系统中，我们有目录和文件。由于组件树和文件系统具有相同的结构，我们可以在它们之上应用相同的算法。'
+  },
+  {
+    name: 'Kris Baxter',
+    workWith: 'Google Search',
+    avatar: '/learning-patterns/images/dalao/IuMJt.jpg',
+    link: 'https://twitter.com/kristoferbaxter/status/1403716060898004995',
+    // insight: 'Front End tech disagreements can many times be summed up as unwillingness to see items from different perspectives. CSS scoping is different for documents versus apps. JS complexity is sometimes necessitated by business requirements. It's never "just" one answer.',
+    insight: '前端技术分歧很多时候可以概括为不愿意从不同的角度看待项目。文档和应用的 CSS 作用范围不同。JS 复杂性有时是业务需求所必需的。它永远不会“只是”一个答案。'
+  },
+  {
+    name: 'Malte Ubl',
+    workWith: 'Google Search',
+    avatar: '/learning-patterns/images/dalao/Z1lhj6V.jpg',
+    link: 'https://twitter.com/cramforce/status/1433460720180416522',
+    // insight: 'There are nuanced but common trade-offs that make it totally reasonably to be right with both choices (in the SPA vs. MPA debate) depending on the situation. Like any other engineering decision. Write down your goals and non-goals and then analyze the trade-offs of the options and pick the one that seems to achieve more goals with fewer trade-offs.',
+    insight: '根据具体情况，存在细微但常见的权衡，这使得两种选择（在 SPA 与 MPA 辩论中）都是完全合理的。写下你的目标和非目标，然后分析选项的取舍，并选择一个似乎以更少的取舍实现更多目标的选项。'
+  },
+  {
+    name: 'Sophie Alpert',
+    workWith: 'Humu',
+    avatar: '/learning-patterns/images/dalao/KGc9s.jpg',
+    link: 'https://sophiebits.com/2020/01/01/fast-maintainable-db-patterns.html#:~:text=Facilitating%20local%20reasoning,a%20large%20organization.',
+    // insight: 'Facilite local reasoning. You should be able to worry about each part of your code in isolation, without holding the entire system in your head. In my experience, this is the key to making complex systems scale, especially (but not only) in a large organization.',
+    insight: '促进局部推理。您应该能够独立地关注代码的每个部分，而无需将整个系统放在脑海中。以我的经验，这是使复杂系统规模化的关键，尤其是（但不仅）在大型组织中。'
+  },
+  {
+    name: 'Kara Erickson',
+    workWith: 'Google Chrome',
+    avatar: '/learning-patterns/images/dalao/Z1QH0Bo.jpg',
+    link: 'https://www.youtube.com/watch?v=Nl4OwNhh2QI',
+    // insight: 'Different app types can lead to different LCP outcomes. SSG (using getStaticProps() to fetch your data and prerender your app at build time), SSR (using getServerSideProps() to fetch your data and prerender your app at request time), CSR (application shell on server, then fetch your data on the client side and re-render) and ISR (which is where you can build your site statically for some subset of pages -- and render the rest of the pages on-demand).',
+    insight: '不同的应用类型会导致不同的 <span class="pink" title="LCP (Largest Contentful Paint) 是一个以用户为中心的性能指标，可以测试用户感知到的页面加载速度，因为当页面主要内容可能加载完成的时候，它记录下了这个时间点。 一个快速的LCP，可以让用户感受到这个页面的可用性。">LCP</span> 结果。SSG（使用 getStaticProps() 在构建时获取您的数据并预渲染您的应用程序），SSR（使用 getServerSideProps() 获取您的数据并在请求时预呈现您的应用程序），CSR（服务器上的应用程序外壳，然后在客户端获取您的数据并重新渲染）和 ISR（您可以在其中为某些页面子集静态构建站点——并按需渲染其余页面）。'
+  },
+  {
+    name: '尤雨溪',
+    workWith: 'Vue.js',
+    avatar: '/learning-patterns/images/dalao/1tEYUY.jpg',
+    link: 'https://evrone.com/evan-you-interview#:~:text=It%C2%A0actually%20takes,make%20it%C2%A0better.',
+    // insight: 'It takes quite some experience to write boring but easy to understand code. I don't think you should feel unqualified to write software just because you didn't go through rigorous CS training, but I also don't think you should ignore them. I took a pragmatic approach where I did a lot of things the dumb way first, which helps to reveal what I needed to learn to make it better.',
+    insight: '写枯燥但易于理解的代码需要相当多的经验。我认为你不应该因为没有经过严格的计算机相关专业培训而觉得自己没有资格编写软件，但我也不认为你应该忽视它们。我采取了一种务实的做法，首先我以愚蠢的方式做了很多事情，这有助于揭示我需要学习什么才能让它变得更好。'
+  },
+  {
+    name: 'Houssein Djirdeh',
+    workWith: 'Google Chrome',
+    avatar: '/learning-patterns/images/dalao/Z10ABsr.jpg',
+    link: 'https://houssein.me/progressive-react#:~:text=It%E2%80%99s%20important%20to,good%20first%20step.',
+    // insight: 'It’s important to note that every site and user base is different. Many developers that ship over 300 KB of JavaScript do not have a problem with how well it performs for most of their users, and that’s fine. However, if you happen to be concerned that the performance of your React site could be better for your users, profiling is always a good first step.',
+    insight: '需要注意的是，每个站点和用户群都是不同的。许多发布超过 300 KB JavaScript 的开发人员对大多数用户的性能没有问题，这很好。但是，如果您碰巧担心您的 React 站点的性能可能对您的用户更好，那么分析始终是一个很好的第一步。'
+  },
+  {
+    name: 'Rich Harris',
+    workWith: 'Svelte',
+    avatar: '/learning-patterns/images/dalao/Z2jV8Xo.jpeg',
+    link: 'https://twitter.com/Rich_Harris/status/1188160012604133376',
+    // insight: 'If we use tools that let us express the same ideas with less code, just like jQuery did, our apps will be more robust. I've spent my career at the intersection of journalism and software, and I've come to believe that writing code has more in common with writing prose than it does with engineering.',
+    insight: '如果我们使用能够让我们用更少的代码表达相同想法的工具，就像 jQuery 所做的那样，我们的应用程序将会更加健壮。我的职业生涯是在新闻和软件的交叉领域度过的，我开始相信编写代码与写散文的共同点比与工程的共同点要多。'
+  },
+  {
+    name: 'Justin Fagnani',
+    workWith: 'Lit',
+    avatar: '/learning-patterns/images/dalao/1mDdRy.jpeg',
+    link: 'https://twitter.com/justinfagnani/status/1212889767181840386',
+    // insight: 'I've been using Eleventy a lot recently and loving it because it so nicely handles the fully static extreme, while web components handle the dynamic side and trivially integrate with eleventy because they're just HTML elements. It's a really great dev and user experience.',
+    insight: '我最近一直在使用 Eleventy 并且喜欢它，因为它可以很好地处理完全静态的极端，而 Web 组件可以处理动态方面并且可以轻松地与 Eleventy 集成，因为它们只是 HTML 元素。这是一个非常棒的开发和用户体验。'
+  },
+  {
+    name: 'Brian Rinaldi',
+    workWith: 'LaunchDarkly',
+    avatar: '/learning-patterns/images/dalao/ZnDO8L-216712.jpg',
+    link: 'https://bejamas.io/blog/understanding-rendering-in-the-jamstack/?utm_source=pocket_mylist#:~:text=Below%20is%20a%20quick%20overview%20of%20different%20types%20of%20rendering%20options%20we%20discussed%20that%20are%20currently%20available%20in%20Jamstack%20applications%20and%20a%20quick%20rule%20of%20thumb%20on%20when%20to%20use%20them',
+    // insight: 'Begin with a "static first" philosophy when building a Jamstack site. Use deferred rendering when you have to render a lot of pages. Use SSR judiciously whenever the content cannot be statically rendered. Use edge rendering when you need to modify pages that have already been rendered.',
+    insight: '在构建 Jamstack 站点时，从“静态优先”的理念开始。当您必须渲染大量页面时，请使用延迟渲染。每当内容无法静态呈现时，请明智地使用 SSR。当您需要修改已经渲染的页面时，使用边缘渲染。'
+  },
+  {
+    name: 'Henrik Joreteg',
+    workWith: 'Software Engineer',
+    avatar: '/learning-patterns/images/dalao/Z2ksdoj.jpg',
+    link: 'https://joreteg.com/blog/viability-of-js-frameworks-on-mobile',
+    // insight: 'How many web developers, to this day, don't test on a phone locally when building apps? This isn't just about small screens, we need to assume that we're building for weaker, slower computers. I think we need to bake mobile into our dev workflow, not just as some final pre-launch check.',
+    insight: '时至今日，有多少 Web 开发人员在构建应用程序时不会在本地手机上进行测试？这不仅仅是小屏幕，我们需要假设我们正在为更弱、更慢的计算机构建。我认为我们需要将移动设备纳入我们的开发工作流程，而不仅仅是作为一些最终的发布前检查。'
+  },
+  {
+    name: 'David K Piano',
+    workWith: 'Software Engineer',
+    avatar: '/learning-patterns/images/dalao/1pyzEo.jpg',
+    link: 'https://twitter.com/DavidKPiano/status/1219688136118276098',
+    // insight: 'To beginner developers, "anti-pattern" means "never do this" when in reality, it should mean "evaluate if/when you should do this and understand the caveats"',
+    insight: '对于初学者开发人员，“反模式”意味着“从不这样做”，而实际上，它应该意味着“评估是否/何时应该这样做并理解警告”'
+  },
+  {
+    name: 'Alex Russell',
+    workWith: 'Microsoft Edge',
+    avatar: '/learning-patterns/images/dalao/ZJX8Wn.jpg',
+    link: 'https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/#:~:text=Performance%20budgets%20keep,investments%20being%20made.',
+    // insight: 'Performance budgets keep everyone on the same page. They help to create a culture of shared enthusiasm for improving the lived user experience. Teams with budgets also find it easier to track and graph progress. This helps support executive sponsors who then have meaningful metrics to point to in justifying the investments being made.',
+    insight: '性能预算让每个人都在同一个页面上。它们有助于营造一种共享热情的文化，以改善现场用户体验。有预算的团队也发现更容易跟踪和绘制进度图。这有助于支持执行发起人，然后他们可以通过有意义的指标来证明所进行的投资是合理的。'
+  },
+  {
+    name: 'Lee Robinson',
+    workWith: 'Next.js and Vercel',
+    avatar: '/learning-patterns/images/dalao/2s6j8c.jpg',
+    link: 'https://twitter.com/leeerob/status/1353523847937536000',
+    // insight: 'As (React) web apps became more complex, new solutions emerged to more easily share logic between components. Redux quickly grew to the most popular state management solution. React Context gave us a first-party solution to share logic between components. This solved UI state for many cases. Eventually we will have `useSelectedContext`.',
+    insight: '随着（React）Web 应用程序变得越来越复杂，出现了新的解决方案，可以更轻松地在组件之间共享逻辑。 Redux 迅速成长为最流行的状态管理解决方案。React Context 为我们提供了在组件之间共享逻辑的第一方解决方案。这解决了许多情况下的 UI 状态。最终我们会有`useSelectedContext`。'
+  },
+  {
+    name: 'Kyle Shevlin',
+    workWith: 'Software Engineer',
+    avatar: '/learning-patterns/images/dalao/ZHuEia.jpg',
+    link: 'https://kyleshevlin.com/use-encapsulation',
+    // insight: 'I recommend that Components should only consume custom hooks, no primitive hooks. Encapsulate your concerns and convey the context correctly via custom hooks.',
+    insight: '我建议组件应该只使用自定义钩子，不要使用原始钩子。封装您的关注点并通过自定义钩子正确传达上下文。'
+  },
+  {
+    name: 'Cher Scarlett',
+    workWith: 'Software Engineer',
+    avatar: '/learning-patterns/images/dalao/1UFhcr.jpg',
+    link: 'https://twitter.com/cherthedev/status/1196863990003044353',
+    // insight: 'You should not be using Context as a global state. You should be using a state machine if it's needed, but moving your state DOWN will generally solve any "too many re-render" issues you are having.',
+    insight: '您不应该将 Context 用作全局状态。如果需要，您应该使用状态机，但是将您的状态向下移动通常会解决您遇到的任何“重新渲染过多”问题。'
+  },
+  {
+    name: 'Kat Marchan',
+    workWith: 'Software Engineer',
+    avatar: '/learning-patterns/images/dalao/ZBAPrI-17535.jpg',
+    link: 'https://twitter.com/zkat__/status/1426029935509090304',
+    // insight: 'Stop treating your code like some precious gem that you're handing down you future generations. They don't give a shit about your abstractions, your DRY, or your brilliant design.Legacy code becomes legacy by doing its job well enough that no one wants to touch it.',
+    insight: '停止将您的代码视为将传给后人的珍宝。他们不在乎你的抽象、你的 <span class="pink" title="DRY (Don\'t Repeat Yourself) 原则：尽量不要使用功能重复的代码原则">DRY</span> 或你出色的设计。祖传代码的价值在于能稳定工作而无需触碰的特质。'
+  },
+  {
+    name: 'Tom Dale',
+    workWith: 'Ember',
+    avatar: '/learning-patterns/images/dalao/1DYgrO-90888.jpg',
+    link: 'https://twitter.com/tomdale/status/1170085911809449985',
+    // insight: 'Here's my take on UI as pure functions vs. embracing the mutability of the DOM...No one gives a shit. People use what's easy to adopt and makes them feel productive. Everything else is a mythology you build up around your project to make its success seem more profound than that.',
+    insight: '这是我对 UI 作为纯函数对比拥抱 DOM 的可变性的看法……没有人在乎。人们使用易于使用的东西并让他们感到高效。其他一切都是您围绕项目建立的神话，以使其成功看起来比这更深刻。'
   }
 ]
 
