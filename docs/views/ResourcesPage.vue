@@ -51,7 +51,7 @@ const communityList = [
   {
     // text: 'Clean Code JavaScript',
     text: 'JavaScript 简洁之道',
-    icon: '/logo.svg',
+    icon: '/learning-patterns/logo.svg',
     path: 'https://github.com/ryanmcdermott/clean-code-javascript'
   },
   {

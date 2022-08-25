@@ -3,11 +3,16 @@ title: '设计模式-概述'
 editLink: true
 ---
 
-<script setup>
+<script
+  setup
+>
 import ArticleTitle from '../components/ArticleTitle.vue'
 </script>
 
-<article-title title="概述" sub="设计模式概述" />
+<article-title
+  title="概述"
+  sub="设计模式概述"
+/>
 
 ---
 
