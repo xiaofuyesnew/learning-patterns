@@ -559,8 +559,8 @@ const Li = styled.li`
   preview="https://codesandbox.io/embed/divine-platform-gbuls?expanddevtools=0&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
 />
 
-<!-- ## Props -->
-## 特性
+<!-- ## Pros -->
+## 优点
 
 <!-- The Provider pattern/Context API makes it possible to pass data to many components, without having to manually pass it through each component layer. -->
 
