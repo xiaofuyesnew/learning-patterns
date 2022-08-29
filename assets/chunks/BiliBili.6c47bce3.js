@@ -1,0 +1,1 @@
+import{_ as r,o as i,c as o}from"../app.4c314623.js";const c=["src"],s={__name:"BiliBili",props:{video:{type:String,required:!0}},setup(e){return(_,t)=>(i(),o("iframe",{class:"iframe",src:e.video,scrolling:"no",border:"0",frameborder:"no",framespacing:"0",allowfullscreen:"true"},null,8,c))}},n=r(s,[["__scopeId","data-v-80c15928"]]);export{n as B};
