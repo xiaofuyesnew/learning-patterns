@@ -56,16 +56,25 @@ export default function DogImages() {
 
 ---
 
-In React, one way to enforce <span class="pink" title="A design principle for separating your codebase into distinct sections, which all have their own concern">separation of concerns</span> is by using the **Container/Presentational pattern**. With this pattern, we can separate the view from the application logic.
+<!-- In React, one way to enforce <span class="pink" title="A design principle for separating your codebase into distinct sections, which all have their own concern">separation of concerns</span> is by using the **Container/Presentational pattern**. With this pattern, we can separate the view from the application logic. -->
+
+在 React 中，一种实现 <span class="pink" title="将代码拆分成不同部分的设计原则，其中每部分代码都有各自的关注点">关注点分离</span> 的方式是使用 **容器/展示模式** 。使用这种模式，我们能将视图与逻辑分开。
 
 ---
 
-Let's say we want to create an application that fetches 6 dog images, and renders these images on the screen.
+<!-- Let's say we want to create an application that fetches 6 dog images, and renders these images on the screen. -->
 
-Ideally, we want to enforce <span class="pink" title="A design principle for separating your codebase into distinct sections, which all have their own concern">separation of concerns</span> by separating this process into two parts:
+假设我们要创建一个应用来获取 6 张狗的图片，并将这些图片渲染在屏幕上。
 
-1. **Presentational Components**: Components that care about ***how*** data is shown to the user. In this example, that's the *rendering the list of dog images*.
-2. **Container Components**: Components that care about ***what*** data is shown to the user. In this example, that's *fetching the dog images*.
+<!-- Ideally, we want to enforce <span class="pink" title="A design principle for separating your codebase into distinct sections, which all have their own concern">separation of concerns</span> by separating this process into two parts: -->
+
+理想情况下，我们希望通过将此过程分为两部分来实现 <span class="pink" title="将代码拆分成不同部分的设计原则，其中每部分代码都有各自的关注点">关注点分离</span> ：
+
+<!-- 1. **Presentational Components**: Components that care about ***how*** data is shown to the user. In this example, that's the *rendering the list of dog images*. -->
+<!-- 2. **Container Components**: Components that care about ***what*** data is shown to the user. In this example, that's *fetching the dog images*. -->
+
+1. **展示组件** ：关注数据 ***如何*** 展示给用户的组件。在此例中，就是 *渲染狗图片的列表* ；
+2. **容器组件** ：关注向用户显示 ***什么*** 数据的组件。在此例中，就是 *获取狗的图片* 。
 
 ---
 
@@ -73,9 +82,12 @@ Ideally, we want to enforce <span class="pink" title="A design principle for sep
   video="//player.bilibili.com/player.html?aid=814979843&bvid=BV1vG4y1k7Bz&cid=814221752&page=1"
 />
 
-Fetching the dog images deals with **application logic**, whereas displaying the images only deals with the **view**.
+<!-- Fetching the dog images deals with **application logic**, whereas displaying the images only deals with the **view**. -->
 
-## Presentational Component
+获取狗的图片处理的是 **应用逻辑** ，而显示图片只处理 **视图** 。
+
+<!-- ## Presentational Component -->
+## 展示组件
 
 A presentational component receives its data through `props`. Its primary function is to simply **display the data it receives** the way we want them to, including styles, *without modifying* that data.
 
@@ -90,7 +102,8 @@ The `DogImages` component is a presentational component. Presentational componen
 
 Presentational components receive their data from **container components**.
 
-## Container Components
+<!-- ## Container Components -->
+## 容器组件
 
 The primary function of container components is to **pass data** to presentational components, which they *contain*. Container components themselves usually don't render any other components besides the presentational components that care about their data. Since they don't render anything themselves, they usually do not contain any styling either.
 

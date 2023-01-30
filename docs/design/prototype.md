@@ -212,7 +212,7 @@ const pet1 = Object.create(dog);
 
 原型模式允许我们轻松地让对象访问和继承其他对象的属性。由于原型链允许我们访问不是直接在对象本身上定义的属性，我们可以避免方法和属性的重复，从而减少使用的内存量。
 
-## References
+## 参考
 
 - [Object.create - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 - [Prototype - ECMA](https://www.ecma-international.org/ecma-262/5.1/#sec-4.3.5)
