@@ -89,18 +89,26 @@ export default function DogImages() {
 <!-- ## Presentational Component -->
 ## 展示组件
 
-A presentational component receives its data through `props`. Its primary function is to simply **display the data it receives** the way we want them to, including styles, *without modifying* that data.
+<!-- A presentational component receives its data through `props`. Its primary function is to simply **display the data it receives** the way we want them to, including styles, *without modifying* that data. -->
 
-Let's take a look at the example that displays the dog images. When rendering the dog images, we simply want to map over each dog image that was fetched from the API, and render those images. In order to do so, we can create a functional component that receives the data through `props`, and renders the data it received.
+展示组件通过 `props` 接收数据。它的主要功能就是简单地以我们希望的方式 **显示接收到的数据** ，包括样式，而 *不修改* 该数据。
+
+<!-- Let's take a look at the example that displays the dog images. When rendering the dog images, we simply want to map over each dog image that was fetched from the API, and render those images. In order to do so, we can create a functional component that receives the data through `props`, and renders the data it received. -->
+
+让我们看一下显示狗的图片的例子。渲染狗的图片时，我们只想列举从 API 获取的每张狗的图片，然后渲染这些图片。为此，我们可以创建一个功能组件，它通过 `props` 接收数据，并渲染这些接收到的数据。
 
 <code-preview
   :code="codes[0]"
   preview="https://codesandbox.io/embed/sleepy-murdock-if0ec?expanddevtools=0&view=preview&hidenavigation=1&theme=darkcodemirror=1&runonclick=1"
 />
 
-The `DogImages` component is a presentational component. Presentational components are *usually* stateless: they do not contain their own React state, unless they need a state for UI purposes. The data they receive, is not altered by the presentational components themselves.
+<!-- The `DogImages` component is a presentational component. Presentational components are *usually* stateless: they do not contain their own React state, unless they need a state for UI purposes. The data they receive, is not altered by the presentational components themselves. -->
 
-Presentational components receive their data from **container components**.
+组件 `DogImages` 就是一个展示组件。展示组件 *通常* 是无状态的：它们不包含自己的 React 状态，除非它们出于 UI 目的需要状态。它们接收到的数据，不会被展示组件自身所修改。
+
+<!-- Presentational components receive their data from **container components**. -->
+
+展示组件从 **容器组件** 接收数据。
 
 <!-- ## Container Components -->
 ## 容器组件
