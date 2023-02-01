@@ -2,7 +2,7 @@
   <div class="container">
     <h1>改进 <span class="color">构建</span> web 应用的方式</h1>
     <img class="cover" src="/images/cover.png">
-    <p class="description">Patterns.dev 是一本关于设计模式和组件模式的免费书籍，用于使用 vanilla JavaScript 和 React 构建强大的 web 应用。</p>
+    <p class="description">Patterns.dev 是一本关于设计模式和组件模式的免费书籍，<br>使用原生 JavaScript 和 React 构建强大的 web 应用。</p>
     <div class="btn-box">
       <a href="https://www.patterns.dev/" target="_blank" class="btn">Patterns.dev</a>
       <a href="/learning-patterns/contents" class="btn start"></a>
