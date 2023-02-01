@@ -99,6 +99,7 @@ defineProps({
       justify-content: center;
       font-size: .8rem;
       line-height: 1em;
+      color: #fff;
 
       &::before {
         content: '读更多';
@@ -106,6 +107,7 @@ defineProps({
 
       &:hover {
         background-color: rgb(100 112 244);
+
         &::before {
           content: '去膜拜';
         }

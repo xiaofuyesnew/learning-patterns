@@ -10,6 +10,7 @@ export default {
   title: 'Patterns',
   description: 'Learn JavaScript design and performance patterns for building more powerful web applications.',
   themeConfig: {
+    outlineTitle: '在此页中',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/xiaofuyesnew/learning-patterns' },
       {
