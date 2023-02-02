@@ -16,7 +16,7 @@
   - [x] 原型模式 (原文：✔️ 校对：❌)
   - [x] 容器/展示模式 (原文：✔️ 校对：❌)
   - [x] 观察者模式 (原文：✔️ 校对：❌)
-  - [ ] 模块模式 (原文：❌ 校对：❌)
+  - [ ] 模块模式 (原文：✔️ 校对：❌)
   - [ ] 混入模式 (原文：❌ 校对：❌)
   - [ ] 中介者/中间件模式 (原文：❌ 校对：❌)
   - [ ] 高阶组件模式 (原文：❌ 校对：❌)
@@ -56,8 +56,12 @@
   - [ ] 虚拟列表 (原文：❌ 校对：❌)
   - [ ] 压缩 JavaScript (原文：❌ 校对：❌)
 
+## TODO List
+
+- [ ] 移动端适配
+- [ ] 介绍视频中文字幕
+- [ ] 图片和视频中文化
+
 [![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 本仓库内容及网站源码遵循 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
-✔️

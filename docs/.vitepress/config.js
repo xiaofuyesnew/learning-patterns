@@ -43,8 +43,7 @@ export default {
       { text: '观点', link: '/insights' },
     ],
     footer: {
-      message: '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;display:inline;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>',
-      copyright: 'Copyright © 2022-present Allen Wong'
+      message: `<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;display:inline;" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br>Copyright © 2022-present <a class="footer-link" href="https://github.com/xiaofuyesnew">Allen Wong</a> | Powered by <a class="footer-link" href="https://vitepress.vuejs.org/">Vitepress</a>`
     },
     sidebar: [
       {

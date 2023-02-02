@@ -4,3 +4,11 @@
   color:#FF42A1;
   font-weight:bolder;
 }
+
+.footer-link {
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    opacity: .8;
+  }
+}

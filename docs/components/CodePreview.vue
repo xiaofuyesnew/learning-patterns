@@ -1,10 +1,15 @@
 <template>
   <div class="box">
-    <div class="code" v-if="code">
-      <div class="nav">
-        <div></div>
+    <div class="code" v-if="code.length">
+      <div class="nav" v-if="code.length > 1">
+        <div class="wrap">
+          <div class="nav-item" :class="{ current: index === state.current }" v-for="(file, index) in code" :key="index" @click="changeFile(index)">
+            <img class="icon" :src="icons[file.type]">
+            <div class="name">{{ file.name }}</div>
+          </div>
+        </div>
       </div>
-      <highlightjs language="javascript" v-if="code" :code="code" />
+      <highlightjs language="javascript" v-if="code.length" :code="code[state.current].content" />
     </div>
     <div class="preview">
       <iframe class="content" :src="preview" />
@@ -13,7 +18,16 @@
 </template>
 
 <script setup>
-import {reactive} from 'vue'
+import { reactive } from 'vue'
+import js from '../public/logo.svg'
+import html from '../public/svg/html.svg'
+import css from '../public/svg/css.svg'
+
+const icons = {
+  js,
+  html,
+  css
+}
 
 const state = reactive({
   current: 0
@@ -21,14 +35,18 @@ const state = reactive({
 
 defineProps({
   code: {
-    type: String,
-    default: () => ''
+    // type: Array,
+    default: () => []
   },
   preview: {
     type: String,
     required: true
   }
 })
+
+const changeFile = (index) => {
+  state.current = index
+}
 
 </script>
 
@@ -52,6 +70,30 @@ defineProps({
       height: 30px;
       background-color: #22272e;
       border-bottom: 1px solid #343434;
+
+      .wrap {
+        height: 100%;
+        display: inline-flex;
+        flex-wrap: nowrap;
+
+        .nav-item {
+          font-size: 12px;
+          padding: 0 10px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          .icon {
+            width: 12px;
+            margin-right: 10px
+          }
+
+          &.current {
+            border-bottom: 2px solid #6cc7f6;
+          }
+        }
+
+      }
     }
 
     :deep(pre) {
