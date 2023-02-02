@@ -1,6 +1,9 @@
 <template>
   <div class="box">
     <div class="code" v-if="code">
+      <div class="nav">
+        <div></div>
+      </div>
       <highlightjs language="javascript" v-if="code" :code="code" />
     </div>
     <div class="preview">
@@ -10,6 +13,11 @@
 </template>
 
 <script setup>
+import {reactive} from 'vue'
+
+const state = reactive({
+  current: 0
+})
 
 defineProps({
   code: {
@@ -34,7 +42,17 @@ defineProps({
   .code {
     width: 50%;
     display: flex;
+    flex-direction: column;
     flex: 1;
+
+    .nav {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      height: 30px;
+      background-color: #22272e;
+      border-bottom: 1px solid #343434;
+    }
 
     :deep(pre) {
       height: 100%;
