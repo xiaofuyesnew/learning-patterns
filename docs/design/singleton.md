@@ -11,7 +11,11 @@ import BiliBili from '../components/BiliBili.vue'
 import CodePreview from '../components/CodePreview.vue'
 
 const codes = [
-  `let count = 0;
+  [
+    {
+      name: 'counter.js',
+      type: 'js',
+      content: `let count = 0;
 
 const counter = {
   increment() {
@@ -23,60 +27,32 @@ const counter = {
 };
 
 Object.freeze(counter);
-export { counter };`,
-  `import Counter from "../src/counterTest";
-
-test("incrementing 1 time should be 1", () => {
-  Counter.increment();
-  expect(Counter.getCount()).toBe(1);
-});
-
-test("incrementing 3 extra times should be 4", () => {
-  Counter.increment();
-  Counter.increment();
-  Counter.increment();
-  expect(Counter.getCount()).toBe(4);
-});
-
-test("decrementing 1  times should be 3", () => {
-  Counter.decrement();
-  expect(Counter.getCount()).toBe(3);
-});`,
-  `import Counter from "./counter";
-
-export default class SuperCounter {
-  constructor() {
-    this.count = 0;
-  }
-
-  increment() {
-    Counter.increment();
-    return (this.count += 100);
-  }
-
-  decrement() {
-    Counter.decrement();
-    return (this.count -= 100);
-  }
-}`
+export { counter };`
+    }  
+  ]
 ]
 
 </script>
 
+<!-- <article-title
+  title="Singleton Pattern"
+  sub="Share a single global instance throughout our application"
+/> -->
+
 <article-title
   title="单例模式"
-  sub="在应用中共享同一个全局实例"
+  sub="在应用中共享单一全局实例"
 />
 
 ---
 
 <!-- Singletons are classes which can be instantiated once, and can be accessed globally. This single instance can be shared throughout our application, which makes Singletons great for managing global state in an application. -->
 
-单例是指可以实例化一次，并能全局访问的类。这种单一实例可以在应用中共享，这使单例非常适合管理应用中的全局状态。
+单例是指可以实例化一次，并能全局访问的类。这种单一实例可以在整个应用中共享，这使其非常适合管理应用中的全局状态。
 
 <!-- First, let's take a look at what a singleton can look like using an ES2015 class. For this example, we’re going to build a `Counter` class that has: -->
 
-首先，让我们看看使用 ES2015 类来实例化的单例会是什么样子。在这个例子中，我们将构建 `Counter` 类，它具有：
+首先，让我们看看使用 ES2015 类来实例化的单例会是什么样子。对于这个例子，我们将创建一个 `Counter` 类，它具有：
 
 <!-- - a `getInstance` method that returns the value of the instance
 - a `getCount` method that returns the current value of the `counter` variable
@@ -112,7 +88,7 @@ class Counter {
 
 <!-- However, this class doesn’t meet the criteria for a Singleton! A Singleton should only be able to get **instantiated once**. Currently, we can create multiple instances of the `Counter` class. -->
 
-然而，这个类不符合单例的标准！一个单例只能被 **实例化一次** 。现在，我们可以多次实例化 `Counter` 类。
+然而，这个类不符合单例的标准！一个单例只能被 **实例化一次** 。到目前为止，我们则可以多次实例化 `Counter` 类。
 
 ```JavaScript
 let counter = 0;
@@ -143,7 +119,7 @@ console.log(counter1.getInstance() === counter2.getInstance()); // false
 
 <!-- By calling the `new` method twice, we just set `counter1` and `counter2` equal to different instances. The values returned by the `getInstance` method on `counter1` and `counter2` effectively returned references to different instances: they aren't strictly equal! -->
 
-通过两次调用 `new` 方法，我们只是得到了 `counter1` 和 `counter2` 两个不相同的实例。 `counter1` 和 `counter2` 上的 `getInstance` 方法的返回值只是不同的实例引用：它们并不严格相等！
+通过两次使用 `new` 的方式，我们得到了 `counter1` 和 `counter2` 两个不相同的实例。 `counter1` 和 `counter2` 上的 `getInstance` 方法的返回值只是不同的实例引用：它们并不严格相等！
 
 <bili-bili
   video="//player.bilibili.com/player.html?aid=514695213&bvid=BV1Jg411r7K5&cid=810086536&page=1"
@@ -151,13 +127,12 @@ console.log(counter1.getInstance() === counter2.getInstance()); // false
 
 <!-- Let’s make sure that only **one** instance of the `Counter` class can be created. -->
 
-让我们确保只能创建 `Counter` 类的 **一个** 实例。
+让我们确保只能创建 **一个** `Counter` 类的实例。
 
 <!-- One way to make sure that only one instance can be created, is by creating a variable called `instance`. In the constructor of `Counter`, we can set `instance` equal to a reference to the instance when a new instance is created. We can prevent new instantiations by checking if the `instance` variable already had a value. If that's the case, an instance already exists. This shouldn't happen: an error should get thrown to let the user know -->
 
-确保只能创建一个实例的其中一种方法就是创建一个称为 `instance` 的变量。在 `Counter` 的构造函数中，我们可以将 `instance` 设置为当新实例创建时对该实例的引用。我们可以通过检查 `instance` 变量是否已经有值来防止新的实例化。如果是这种情况，实例已经存在。这不应该发生：应该抛出一个错误让用户知道。
+确保只创建一个实例的一种方法就是创建一个名为 `instance` 的变量。在 `Counter` 的构造函数中，我们可以在创建新实例时将 `instance` 设置为对本实例的引用。我们可以通过检查 `instance` 变量是否已经有值来防止新的实例化。如果是这样，那么实例已经存在。这不应该发生：此时应该抛出一个错误让用户知道。
 
-<!-- // Error: You can only create one instance! -->
 ```JavaScript
 let instance;
 let counter = 0;
@@ -189,12 +164,12 @@ class Counter {
 
 const counter1 = new Counter();
 const counter2 = new Counter();
-// 错误: 只能创建一个实例！
+// Error: You can only create one instance!
 ```
 
 <!-- Perfect! We aren't able to create multiple instances anymore. -->
 
-完美！我们再也不能创建多个实例了。
+很好！我们再也不能创建更多的实例了。
 
 <!-- Let's export the `Counter` instance from the `counter.js` file. But before doing so, we should <span class="pink">freeze</span> the instance as well. The `Object.freeze` method makes sure that consuming code cannot modify the Singleton. Properties on the frozen instance cannot be added or modified, which reduces the risk of accidentally overwriting the values on the Singleton. -->
 
