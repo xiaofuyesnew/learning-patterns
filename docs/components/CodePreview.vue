@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="code" v-if="code.length">
-      <div class="nav" v-if="code.length > 1">
+      <div class="nav" v-if="codeShow && code.length > 0">
         <div class="wrap">
           <div class="nav-item" :class="{ current: index === state.current }" v-for="(file, index) in code" :key="index" @click="changeFile(index)">
             <img class="icon" :src="icons[file.type]">
@@ -11,7 +11,7 @@
       </div>
       <highlightjs language="javascript" v-if="code.length" :code="code[state.current].content" />
     </div>
-    <div class="preview">
+    <div class="preview" v-if="preview">
       <iframe class="content" :src="preview" />
     </div>
   </div>
@@ -38,6 +38,10 @@ defineProps({
     // type: Array,
     default: () => []
   },
+  codeShow: {
+    type: Boolean,
+    default: () => true
+  },
   preview: {
     type: String,
     required: true
@@ -53,7 +57,7 @@ const changeFile = (index) => {
 <style lang="scss" scoped>
 .box {
   width: 100%;
-  height: 540px;
+  max-height: 540px;
   display: flex;
   justify-content: space-between;
 
@@ -62,6 +66,7 @@ const changeFile = (index) => {
     display: flex;
     flex-direction: column;
     flex: 1;
+    // background-color: #22272e;
 
     .nav {
       width: 100%;
@@ -70,6 +75,16 @@ const changeFile = (index) => {
       height: 30px;
       background-color: #22272e;
       border-bottom: 1px solid #343434;
+
+      &:hover {
+        &::-webkit-scrollbar {
+          display: auto;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       .wrap {
         height: 100%;
@@ -82,6 +97,8 @@ const changeFile = (index) => {
           display: flex;
           align-items: center;
           cursor: pointer;
+          justify-content: center;
+          // box-sizing: border-box;
 
           .icon {
             width: 12px;
@@ -97,9 +114,10 @@ const changeFile = (index) => {
     }
 
     :deep(pre) {
-      height: 100%;
+      max-height: 510px;
       width: 100%;
       margin: 0;
+      flex: 1;
 
       .hljs {
         width: 100%;
@@ -109,7 +127,7 @@ const changeFile = (index) => {
   }
 
   .preview {
-    height: 100%;
+    height: 540px;
     flex: 1;
     position: relative;
     overflow: hidden;
