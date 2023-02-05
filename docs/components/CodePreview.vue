@@ -19,9 +19,9 @@
 
 <script setup>
 import { reactive } from 'vue'
-import js from '../public/logo.svg'
-import html from '../public/svg/html.svg'
-import css from '../public/svg/css.svg'
+import js from '../assets/svg/logo.svg'
+import html from '../assets/svg/html.svg'
+import css from '../assets/svg/css.svg'
 
 const icons = {
   js,
