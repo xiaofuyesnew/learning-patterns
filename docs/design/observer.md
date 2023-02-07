@@ -77,6 +77,11 @@ ReactDOM.render(
 
 </script>
 
+<!-- 
+Observer Pattern
+Use observables to notify subscribers when an event occurs
+-->
+
 <article-title
   title="观察者模式"
   sub="当一个事件发生时使用可观察对象通知观察者"
