@@ -9,60 +9,13 @@ editLink: true
 import ArticleTitle from '../components/ArticleTitle.vue'
 import CodePreview from '../components/CodePreview.vue'
 
-const codes = [
-  `class Dog {
-  constructor(name) {
-    this.name = name;
-  }
-
-  bark() {
-    return \`Woof!\`;
-  }
-}
-
-const dog1 = new Dog("Daisy");
-const dog2 = new Dog("Max");
-const dog3 = new Dog("Spot");
-
-Dog.prototype.play = () => console.log("Playing now!");
-
-dog1.play();`,
-  `class Dog {
-  constructor(name) {
-    this.name = name;
-  }
-
-  bark() {
-    console.log("Woof!");
-  }
-}
-
-class SuperDog extends Dog {
-  constructor(name) {
-    super(name);
-  }
-
-  fly() {
-    console.log(\`Flying!\`);
-  }
-}
-
-const dog1 = new SuperDog("Daisy");
-dog1.bark();
-dog1.fly();`,
-  `const dog = {
-  bark() {
-    console.log(\`Woof!\`);
-  }
-};
-
-const pet1 = Object.create(dog);
-
-pet1.bark(); // Woof!
-console.log("Direct properties on pet1: ", Object.keys(pet1));
-console.log("Properties on pet1's prototype: ", Object.keys(pet1.__proto__));`
-]
+const codes = []
 </script>
+
+<!--
+Prototype Pattern
+Share properties among many objects of the same type
+-->
 
 <article-title
   title="原型模式"
@@ -216,3 +169,7 @@ const pet1 = Object.create(dog);
 
 - [Object.create - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 - [Prototype - ECMA](https://www.ecma-international.org/ecma-262/5.1/#sec-4.3.5)
+
+---
+
+原文链接：[Prototype Pattern](https://www.patterns.dev/posts/prototype-pattern/)

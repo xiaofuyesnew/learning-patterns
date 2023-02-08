@@ -3,9 +3,7 @@ title: '提供者模式'
 editLink: true
 ---
 
-<script
-  setup
->
+<script setup>
 import ArticleTitle from '../components/ArticleTitle.vue'
 import BiliBili from '../components/BiliBili.vue'
 import CodePreview from '../components/CodePreview.vue'
@@ -94,6 +92,200 @@ export default function ListItem() {
   );
 }`
     },
+  ],
+  [
+    {
+      name: 'App.js',
+      type: 'js',
+      content: `import React, { useState } from "react";
+import "./styles.css";
+
+import List from "./List";
+import Toggle from "./Toggle";
+
+export const themes = {
+  light: {
+    background: "#fff",
+    color: "#000"
+  },
+  dark: {
+    background: "#171717",
+    color: "#fff"
+  }
+};
+
+export const ThemeContext = React.createContext();
+
+export default function App() {
+  const [theme, setTheme] = useState("dark");
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  return (
+    <div className={\`App theme-\${theme}\`}>
+      <ThemeContext.Provider value={{ theme: themes[theme], toggleTheme }}>
+        <>
+          <Toggle />
+          <List />
+        </>
+      </ThemeContext.Provider>
+    </div>
+  );
+}`
+    },
+    {
+      name: 'Toggle.js',
+      type: 'js',
+      content: `import React, { useContext } from "react";
+import { ThemeContext } from "./App";
+
+export default function Toggle() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <label className="switch">
+      <input type="checkbox" onClick={theme.toggleTheme} />
+      <span className="slider round" />
+    </label>
+  );
+}`
+    }
+  ],
+  [
+    {
+      name: 'App.js',
+      type: 'js',
+      content: `import React, { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import "./styles.css";
+
+import List from "./List";
+import Toggle from "./Toggle";
+
+export const themes = {
+  light: {
+    background: "#fff",
+    color: "#000"
+  },
+  dark: {
+    background: "#171717",
+    color: "#fff"
+  }
+};
+
+export default function App() {
+  const [theme, setTheme] = useState("dark");
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  return (
+    <div className={\`App theme-\${theme}\`}>
+      <ThemeProvider theme={themes[theme]}>
+        <>
+          <Toggle toggleTheme={toggleTheme} />
+          <List />
+        </>
+      </ThemeProvider>
+    </div>
+  );
+}
+`
+    },
+    {
+      name: 'ListItem.js',
+      type: 'js',
+      content: `import React from "react";
+import styled from "styled-components";
+
+export default function ListItem() {
+  return (
+    <Li>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Li>
+  );
+}
+
+const Li = styled.li\`
+  \${({ theme }) => \`
+    background-color: \${theme.backgroundColor};
+    color: \${theme.color};
+  \`}
+\`;`
+    }
+  ],
+  [
+    {
+      name:'index.js',
+      type: 'js',
+      content: `import React, { useState, createContext, useContext, useEffect } from "react";
+import ReactDOM from "react-dom";
+import moment from "moment";
+
+import "./styles.css";
+
+const CountContext = createContext(null);
+
+function Reset() {
+  const { setCount } = useCountContext();
+
+  return (
+    <div className="app-col">
+      <button onClick={() => setCount(0)}>Reset count</button>
+      <div>Last reset: {moment().format("h:mm:ss a")}</div>
+    </div>
+  );
+}
+
+function Button() {
+  const { count, setCount } = useCountContext();
+
+  return (
+    <div className="app-col">
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <div>Current count: {count}</div>
+    </div>
+  );
+}
+
+function useCountContext() {
+  const context = useContext(CountContext);
+  if (!context)
+    throw new Error(
+      "useCountContext has to be used within CountContextProvider"
+    );
+  return context;
+}
+
+function CountContextProvider({ children }) {
+  const [count, setCount] = useState(0);
+  return (
+    <CountContext.Provider value={{ count, setCount }}>
+      {children}
+    </CountContext.Provider>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <CountContextProvider>
+        <Button />
+        <Reset />
+      </CountContextProvider>
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
+`
+    }
   ]
 ]
 
@@ -339,7 +531,7 @@ export default function TextBox() {
 
 <!-- Perfect! We didn't have to pass down any data to components that didn't care about the current value of the theme. -->
 
-完美！我们不必将任何数据传递给不关心主题当前值的组件。
+很好！我们不必将任何数据传递给不关心主题值的组件。
 
 <code-preview
   :code="codes[1]"
@@ -360,9 +552,9 @@ function useThemeContext() {
 }
 ```
 
-<!-- To make sure that it's a valid theme, let's throw an error if useContext(ThemeContext) returns a falsy value. -->
+<!-- To make sure that it's a valid theme, let's throw an error if `useContext(ThemeContext)` returns a falsy value. -->
 
-为了确保它是一个有效的主题，让我们在 useContext(ThemeContext) 返回一个错误值时抛出一个错误。
+为了确保它是有效的主题，让我们在 `useContext(ThemeContext)` 返回错误值时抛出错误。
 
 ```JavaScript
 function useThemeContext() {
@@ -376,7 +568,7 @@ function useThemeContext() {
 
 <!-- Instead of wrapping the components directly with the `ThemeContext.Provider` component, we can create a HOC that wraps the component to provide its values. This way, we can separate the context logic from the rendering components, which improves the reusability of the provider. -->
 
-我们可以创建一个包装组件以提供其值的高阶组件，而不是直接使用 `ThemeContext.Provider` 组件包装组件。这样，我们可以将上下文逻辑与渲染组件分离，从而提高提供者的可重用性。
+我们可以创建一个高阶组件来包装组件以提供其值，而不是直接使用 `ThemeContext.Provider` 包装组件。这样，我们可以将上下文逻辑与渲染组件分离，从而提高提供者的复用性。
 
 ```JavaScript
 function ThemeProvider({children}) {
@@ -424,18 +616,18 @@ export default function TextBox() {
 
 <!-- By creating hooks for the different contexts, it's easy to separate the providers's logic from the components that render the data. -->
 
-通过为不同的上下文创建钩子，很容易将提供者的逻辑与呈现数据的组件分开。
+通过为不同的上下文创建钩子，很容易将提供者的逻辑与渲染数据的组件分开。
 
 <!-- ## Case Study -->
 ## 案例分析
 
 <!-- Some libraries provide built-in providers, which values we can use in the consuming components. A good example of this, is [styled-components](https://styled-components.com/docs/advanced). -->
 
-一些库提供内置提供程序，我们可以在消费组件中使用这些值。一个很好的例子就是 [样式化组件](https://styled-components.com/docs/advanced)。
+一些库提供内置的提供者，其值可以在使用其他组件时消费。一个很好的例子就是 [样式化组件](https://styled-components.com/docs/advanced)。
 
 <!-- > ***"No experience with styled-components is needed to understand this example."*** -->
 
-> ***“理解这个例子不需要任何风格组件的经验。”***
+> ***“理解这个例子不需要任何样式化组件的经验。”***
 
 <!-- The styled-components library provides a `ThemeProvider` for us. Each styled component will have access to the value of this provider! Instead of creating a context API ourselves, we can use the one that's been provided to us! -->
 
@@ -443,7 +635,7 @@ export default function TextBox() {
 
 <!-- Let's use the same List example, and wrap the components in the `ThemeProvider` imported from the `styled-component` library. -->
 
-让我们使用相同的 List 示例，并将组件包装在从 `styled-component` 库导入的 `ThemeProvider` 中。
+让我们使用与前述相同的 List 示例，并将组件包装在从 `styled-component` 库导入的 `ThemeProvider` 中。
 
 ```JavaScript
 import { ThemeProvider } from "styled-components";
@@ -470,7 +662,7 @@ export default function App() {
 
 <!-- Instead of passing an inline `style` prop to the `ListItem` component, we'll make it a `styled.li` component. Since it's a styled component, we can access the value of `theme`! -->
 
-我们不会将内联 `style` 属性传递给 `ListItem` 组件，而是将其设为 `styled.li` 组件。由于它是一个样式组件，我们可以访问 `theme` 的值！
+我们不会将内联 `style` 属性传递给 `ListItem` 组件，而是将其设置为 `styled.li` 组件。由于它是一个样式组件，我们可以访问 `theme` 的值！
 
 ```JavaScript
 import styled from "styled-components";
@@ -508,30 +700,30 @@ const Li = styled.li`
 
 <!-- The Provider pattern/Context API makes it possible to pass data to many components, without having to manually pass it through each component layer. -->
 
-提供者模式/上下文 API 使得将数据传递给许多组件成为可能，而无需手动通过每个组件层传递数据。
+提供者模式/上下文 API 使得将数据传递给许多组件成为可能，无需手动通过每个组件层级传递数据。
 
 <!-- It reduces the risk of accidentally introducing bugs when refactoring code. Previously, if we later on wanted to rename a prop, we had to rename this prop throughout the entire application where this value was used. -->
 
-它降低了重构代码时意外引入错误的风险。以前，如果我们以后想要重命名一个属性，我们必须在整个使用这个值的应用中重命名这个属性。
+它降低了重构代码时意外引入错误的风险。之前，如果我们此后想要重命名属性，我们必须在整个使用这该值的应用中重命名这个属性。
 
-<!-- We no longer have to deal with prop-drilling, which could be seen as an anti-pattern. Previously, it could be difficult to understand the dataflow of the application, as it wasn't always clear where certain prop values originated. With the Provider pattern, we no longer have to unnecessarily pass props to component that don't care about this data. -->
+<!-- We no longer have to deal with *prop-drilling*, which could be seen as an anti-pattern. Previously, it could be difficult to understand the dataflow of the application, as it wasn't always clear where certain prop values originated. With the Provider pattern, we no longer have to unnecessarily pass props to component that don't care about this data. -->
 
-我们不再需要处理属性穿透，这可以被视为一种反模式。以前，可能很难理解应用的数据流，因为某些属性值的来源并不总是很清楚。使用提供者模式，我们不再需要将属性不必要地传递给不关心这些数据的组件。
+我们不再需要处理 *属性穿透* ，其可被视为一种反模式。之前，可能难以理解应用的数据流，因为某些属性值的来源并不总是很清楚。使用提供者模式，我们不再需要将属性不必要地传递给不关心这些数据的组件。
 
 <!-- Keeping some sort of global state is made easy with the Provider pattern, as we can give components access to this global state. -->
 
-使用提供者模式可以很容易地保持某种全局状态，因为我们可以让组件访问这种全局状态。
+使用提供者模式可以很容易地保持某种全局状态，从而我们可以让组件访问这种全局状态。
 
 <!-- ## Cons -->
 ## 缺点
 
 <!-- In some cases, overusing the Provider pattern can result in performance issues. All components that consume the context re-render on each state change. -->
 
-在某些情况下，过度使用提供者模式会导致性能问题。所有使用上下文的组件都会在每次状态更改时重新渲染。
+在某些情况下，过度使用提供者模式会导致性能问题。所有使用上下文的组件都会在每次状态改变时重新渲染。
 
 <!-- Let's look at an example. We have a simple counter which value increases every time we click on the `Increment` button in the `Button` component. We also have a `Reset` button in the `Reset` component, which resets the count back to `0`. -->
 
-让我们看一个例子。我们有一个简单的计数器，每次单击 `Button` 组件中的 `Increment` 按钮时，其值都会增加。我们在 `Reset` 组件中还有一个 `reset` 按钮，它将计数重置回 `0`。
+让我们看一个例子。有一个简单的计数器，每次点击 `Button` 组件中的 `Increment` 按钮时，其值都会增加。我们在 `Reset` 组件中还有一个 `reset` 按钮，它将计数重置回 `0`。
 
 <!-- When you click on `Increment`, however, you can see that it's not just the count that re-renders. The date in the `Reset` component re-renders as well! -->
 
@@ -544,7 +736,7 @@ const Li = styled.li`
 
 <!-- The `Reset` component also re-rendered since it consumed the `useCountContext`. In smaller applications, this won't matter too much. In larger applications, passing a frequently updated value to many components can affect the performance negatively. -->
 
-`Reset` 组件也重新渲染，因为它消费了 `useCountContext`。在较小的应用中，这无关紧要。在较大的应用中，将频繁更新的值传递给许多组件可能会对性能产生负面影响。
+`Reset` 组件也重新渲染，因为它也产生了 `useCountContext` 的消费。在较小的应用中，这无关紧要。在较大的应用中，将频繁更新的值传递给许多组件可能会对性能产生负面影响。
 
 <!-- To make sure that components aren't consuming providers that contain unnecessary values which may update, you can create several providers for each separate usecase. -->
 
