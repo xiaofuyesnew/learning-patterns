@@ -11,7 +11,11 @@ import BiliBili from '../components/BiliBili.vue'
 import CodePreview from '../components/CodePreview.vue'
 
 const codes = [
-  `import React from "react";
+  [
+    {
+      name: 'index.js',
+      type: 'js',
+      content: `import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
@@ -22,143 +26,83 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   rootElement
-);`,
-  `import React, { useState } from "react";
+);
+`
+    },
+    {
+      name: 'App.js',
+      type: 'js',
+      content: `import React from "react";
 import "./styles.css";
 
 import List from "./List";
 import Toggle from "./Toggle";
 
-export const themes = {
-  light: {
-    background: "#fff",
-    color: "#000"
-  },
-  dark: {
-    background: "#171717",
-    color: "#fff"
-  }
-};
-
-export const ThemeContext = React.createContext();
-
 export default function App() {
-  const [theme, setTheme] = useState("dark");
-
-  function toggleTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
-  }
-
-  return (
-    <div className={\`App theme-\${theme}\`}>
-      <ThemeContext.Provider value={{ theme: themes[theme], toggleTheme }}>
-        <>
-          <Toggle />
-          <List />
-        </>
-      </ThemeContext.Provider>
-    </div>
-  );
-}`,
-  `import React, { useState } from "react";
-import { ThemeProvider } from "styled-components";
-import "./styles.css";
-
-import List from "./List";
-import Toggle from "./Toggle";
-
-export const themes = {
-  light: {
-    background: "#fff",
-    color: "#000"
-  },
-  dark: {
-    background: "#171717",
-    color: "#fff"
-  }
-};
-
-export default function App() {
-  const [theme, setTheme] = useState("dark");
-
-  function toggleTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
-  }
-
-  return (
-    <div className={\`App theme-\${theme}\`}>
-      <ThemeProvider theme={themes[theme]}>
-        <>
-          <Toggle toggleTheme={toggleTheme} />
-          <List />
-        </>
-      </ThemeProvider>
-    </div>
-  );
-}`,
-  `import React, { useState, createContext, useContext, useEffect } from "react";
-import ReactDOM from "react-dom";
-import moment from "moment";
-
-import "./styles.css";
-
-const CountContext = createContext(null);
-
-function Reset() {
-  const { setCount } = useCountContext();
-
-  return (
-    <div className="app-col">
-      <button onClick={() => setCount(0)}>Reset count</button>
-      <div>Last reset: {moment().format("h:mm:ss a")}</div>
-    </div>
-  );
-}
-
-function Button() {
-  const { count, setCount } = useCountContext();
-
-  return (
-    <div className="app-col">
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <div>Current count: {count}</div>
-    </div>
-  );
-}
-
-function useCountContext() {
-  const context = useContext(CountContext);
-  if (!context)
-    throw new Error(
-      "useCountContext has to be used within CountContextProvider"
-    );
-  return context;
-}
-
-function CountContextProvider({ children }) {
-  const [count, setCount] = useState(0);
-  return (
-    <CountContext.Provider value={{ count, setCount }}>
-      {children}
-    </CountContext.Provider>
-  );
-}
-
-function App() {
   return (
     <div className="App">
-      <CountContextProvider>
-        <Button />
-        <Reset />
-      </CountContextProvider>
+      <Toggle />
+      <List />
     </div>
   );
 }
+`
+    },
+    {
+      name: 'List.js',
+      type: 'js',
+      content: `import React from "react";
+import ListItem from "./ListItem";
 
-ReactDOM.render(<App />, document.getElementById("root"));`
+export default function Boxes() {
+  return (
+    <ul className="list">
+      {new Array(10).fill(0).map((x, i) => (
+        <ListItem key={i} />
+      ))}
+    </ul>
+  );
+}`
+    },
+    {
+      name: 'Toggle.js',
+      type: 'js',
+      content: `import React from "react";
+
+export default function Toggle() {
+  return (
+    <label className="switch">
+      <input type="checkbox" />
+      <span className="slider round" />
+    </label>
+  );
+}`
+    },
+    {
+      name: 'ListItem.js',
+      type: 'js',
+      content: `import React from "react";
+
+export default function ListItem() {
+  return (
+    <li>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </li>
+  );
+}`
+    },
+  ]
 ]
 
 </script>
+
+<!--
+Provider Pattern
+Make data available to multiple child components
+-->
 
 <article-title
   title="提供者模式"
@@ -169,15 +113,15 @@ ReactDOM.render(<App />, document.getElementById("root"));`
 
 <!-- In some cases, we want to make available data to many (if not all) components in an application. Although we can pass data to components using `props`, this can be difficult to do if almost all components in your application need access to the value of the props. -->
 
-在某些情况下，我们希望为应用中的许多（如果不是全部）组件提供可用数据。虽然我们可以使用 `props` 将数据传递给组件，但如果应用中的几乎所有组件都需要访问该属性的值，这可能很难做到。
+在某些情况下，我们希望为应用中的许多（而非全部）组件提供可用数据。虽然我们可以使用 `props` 将数据传递给组件，但如果应用中的众多组件都需要访问该属性的值，这就可能很难做到。
 
-<!-- We often end up with something called prop drilling, which is the case when we pass props far down the component tree. Refactoring the code that relies on the props becomes almost impossible, and knowing where certain data comes from is difficult. -->
+<!-- We often end up with something called *prop drilling*, which is the case when we pass props far down the component tree. Refactoring the code that relies on the props becomes almost impossible, and knowing where certain data comes from is difficult. -->
 
-我们经常会遇到一种叫做属性穿透的东西，当我们将属性传递到组件树很深的地方时就是这种情况。重构依赖于属性的代码几乎是不可能的，而且很难知道某些数据的来源。
+我们经常会遇到一种叫做 *属性穿透* 的情况，当我们将属性传递到组件树很深的地方时就属于该情况。重构依赖于属性的代码几乎是不可能的，而且很难知道某些数据的具体来源。
 
 <!-- Let's say that we have one `App` component that contains certain data. Far down the component tree, we have a `ListItem`, `Header` and `Text` component that all need this data. In order to get this data to these components, we'd have to pass it through multiple layers of components. -->
 
-假设我们有一个包含特定数据的 `App` 组件。在组件树的最底层，我们有一个 `ListItem`、`Header` 和 `Text` 组件，它们都需要这些数据。为了将这些数据传递给这些组件，我们必须通过多层组件传递它们。
+假设我们有一个 `App` 组件，它包含一些特定数据。在组件树的最底层，有 `ListItem`、`Header` 和 `Text` 组件，它们都需要这些数据。为了将数据传递给这些组件，我们必须经过多层组件的传递。
 
 <bili-bili
   video="//player.bilibili.com/player.html?aid=602330153&bvid=BV1FB4y1577Z&cid=811707894&page=1"
@@ -185,7 +129,7 @@ ReactDOM.render(<App />, document.getElementById("root"));`
 
 <!-- In our codebase, that would look something like the following: -->
 
-在我们的代码中，它看起来像下面这样：
+在我们的代码中，它看起来会是下面这样：
 
 ```JavaScript
 function App() {
@@ -216,19 +160,19 @@ const Text = ({ data }) => <h1>{data.text}</h1>
 
 <!-- Passing props down this way can get quite messy. If we want to rename the `data` prop in the future, we'd have to rename it in all components. The bigger your application gets, the trickier prop drilling can be. -->
 
-以这种方式传递属性会变得非常混乱。如果我们将来想重命名 `data` 属性，我们必须在所有组件中重命名它。应用越大，属性穿透就越棘手。
+这种传递属性的方式会使代码变得异常混乱。如果我们将来想重命名 `data` 属性，则必须在所有组件中都重命名它。应用规模越大，属性穿透就越棘手。
 
 <!-- It would be optimal if we could skip all the layers of components that don't need to use this data. We need to have something that gives the components that need access to the value of `data` direct access to it, without relying on prop drilling. -->
 
-如果我们可以跳过不需要使用这些数据的所有组件层，那将是最佳选择。我们需要一些东西，让需要访问 `data` 值的组件直接访问它，而不依赖于属性穿透。
+如果我们可以跳过不需要使用这些数据的组件，那将是最佳选择。我们需要一些东西，让需要访问 `data` 值的组件直接访问它，而不依赖于属性穿透。
 
 <!-- This is where the **Provider Pattern** can help us out! With the Provider Pattern, we can make data available to multiple components. Rather than passing that data down each layer through props, we can wrap all components in a `Provider`. A Provider is a higher order component provided to us by the `Context` object. We can create a Context object, using the `createContext` method that React provides for us. -->
 
-这就是 **提供者模式** 可以帮助我们的地方！使用提供者模式，我们可以使数据可用于多个组件。我们可以将所有组件包装在 `Provider` 中，而不是通过属性将数据向下传递到每一层。Provider 是 `Context` 对象提供给我们的高阶组件。我们可以使用 React 为我们提供的 `createContext` 方法创建一个 Context 对象。
+这就是 **提供者模式** 可以为我们提供的帮助！使用提供者模式，可以使数据用于多个组件。我们可以将所有组件包装到 `Provider` 中，而不是通过属性将数据向下传递到每一层。Provider 是由 `Context` 对象提供的高阶组件。我们可以使用 React 的 `createContext` 方法创建一个 Context 对象。
 
 <!-- The Provider receives a `value` prop, which contains the data that we want to pass down. All components that are wrapped within this provider have access to the value of the `value` prop. -->
 
-Provider 接收一个 `value` 属性，其中包含我们要传递的数据。包裹在此 provider 中的所有组件都可以访问 `value` 属性的值。
+Provider 接收一个 `value` 属性，其中包含我们要传递的数据。包装在该 provider 中的所有组件都可以访问 `value` 属性的值。
 
 ```JavaScript
 const DataContext = React.createContext()
@@ -253,7 +197,7 @@ function App() {
 
 <!-- Each component can get access to the `data`, by using the `useContext` hook. This hook receives the context that `data` has a reference with, `DataContext` in this case. The `useContext` hook lets us read and write data to the context object. -->
 
-通过使用 `useContext` 钩子，每个组件都可以访问 `data`。这个钩子接收 `data` 有引用的上下文，在这种情况下是 `DataContext` 。 `useContext` 钩子让我们可以读取和写入数据到上下文对象。
+通过使用 `useContext` 钩子，每个组件都可以访问 `data`。这个钩子接收 `data` 引用的上下文，此例中是 `DataContext` 。 `useContext` 钩子让我们在上下文对象中进行读取和写入数据。
 
 ```JavaScript
 const DataContext = React.createContext();
@@ -292,7 +236,7 @@ function Header() {
 
 <!-- The components that aren't using the `data` value won't have to deal with `data` at all. We no longer have to worry about passing props down several levels through components that don't need the value of the props, which makes refactoring a lot easier. -->
 
-不使用 `data` 值的组件根本不需要处理 `data`。我们不再需要担心通过不需要属性值的组件将属性向下传递几层，这使得重构变得更加容易。
+不使用 `data` 的组件就不需要处理 `data`。我们不需要担心在不需要使用属性的组件中再去多传递几层属性，这使得重构变得更加容易。
 
 <bili-bili
   video="//player.bilibili.com/player.html?aid=429759431&bvid=BV1WG41147SS&cid=811708074&page=1"
@@ -302,7 +246,7 @@ function Header() {
 
 <!-- The Provider pattern is very useful for sharing global data. A common usecase for the provider pattern is sharing a theme UI state with many components. -->
 
-提供者模式对于共享全局数据非常有用。提供者模式的一个常见用例是与许多组件共享主题 UI 状态。
+提供者模式对于共享全局数据非常有用。提供者模式的一个常见使用场景是在众多组件中共享主题 UI 状态。
 
 <!-- Say we have a simple app that shows a list. -->
 
@@ -315,7 +259,7 @@ function Header() {
 
 <!-- We want the user to be able to switch between lightmode and darkmode, by toggling the switch. When the user switches from dark- to lightmode and vice versa, the background color and text color should change! Instead of passing the current theme value down to each component, we can wrap the components in a `ThemeProvider`, and pass the current theme colors to the provider. -->
 
-我们希望用户能够通过切换开关在亮模式和暗模式之间切换。当用户从暗模式切换到亮模式时，反之亦然，背景颜色和文本颜色应该改变！而不是将当前主题值传递给每个组件，我们可以将组件包装在 `ThemeProvider` 中，并将当前主题颜色传递给提供者。
+我们希望用户能够通过切换开关在明亮模式和黑暗模式之间切换。当用户从黑暗模式切换到明亮模式时，背景颜色和文本颜色应该改变，反之亦然！我们可以将组件包装在 `ThemeProvider` 中，而不是将当前主题值传递给每个组件，并将当前主题颜色交给提供者处理。
 
 ```JavaScript
 export const ThemeContext = React.createContext();
@@ -611,3 +555,7 @@ const Li = styled.li`
 
 - [Context - React](https://reactjs.org/docs/context.html)
 - [How To Use React Context Effectively - Kent C. Dodds](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
+
+---
+
+原文链接：[Provider Pattern](https://www.patterns.dev/posts/provider-pattern/)
