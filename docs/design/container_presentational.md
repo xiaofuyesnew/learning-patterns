@@ -10,42 +10,7 @@ import ArticleTitle from '../components/ArticleTitle.vue'
 import BiliBili from '../components/BiliBili.vue'
 import CodePreview from '../components/CodePreview.vue'
 
-const codes = [
-  `import React from "react";
-
-export default function DogImages({ dogs }) {
-  return dogs.map((dog, i) => <img src={dog} key={i} alt="Dog" />);
-}`,
-  `import React from "react";
-import DogImages from "./DogImages";
-
-export default class DogImagesContainer extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      dogs: []
-    };
-  }
-
-  componentDidMount() {
-    fetch("https://dog.ceo/api/breed/labrador/images/random/6")
-      .then(res => res.json())
-      .then(({ message }) => this.setState({ dogs: message }));
-  }
-
-  render() {
-    return <DogImages dogs={this.state.dogs} />;
-  }
-}`,
-  `import React from "react";
-import useDogImages from "./useDogImages";
-
-export default function DogImages() {
-  const dogs = useDogImages();
-
-  return dogs.map((dog, i) => <img src={dog} key={i} alt="Dog" />);
-}`
-]
+const codes = []
 
 </script>
 
