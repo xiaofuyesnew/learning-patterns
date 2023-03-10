@@ -12,11 +12,11 @@
   "author": "",
   "license": "CC BY-NC-SA 4.0",
   "devDependencies": {
-    "@algolia/client-search": "^4.14.3",
+    "@algolia/client-search": "^4.15.0",
     "@highlightjs/vue-plugin": "^2.1.0",
     "highlight.js": "^11.7.0",
-    "sass": "^1.58.0",
-    "vitepress": "1.0.0-alpha.45",
-    "vue": "^3.2.45"
+    "sass": "^1.58.3",
+    "vitepress": "1.0.0-alpha.51",
+    "vue": "^3.2.47"
   }
 }
